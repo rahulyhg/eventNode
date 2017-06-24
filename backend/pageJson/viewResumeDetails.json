@@ -1,0 +1,65 @@
+{
+    "title": "Resume Details",
+    "description": "List of ResumeDetails",
+    "pageType": "view",
+    "sendIdWithCreate": true,
+    "urlFields": ["_id"],
+    "fields": [{
+        "name": "Name",
+        "isSort": "",
+        "tableRef": "name"
+    }, {
+        "name": "lastName",
+        "isSort": "",
+        "tableRef": "lastName"
+    }, {
+        "name": "username",
+        "isSort": "",
+        "tableRef": "username"
+    }, {
+        "name": "contactNo",
+        "isSort": "",
+        "tableRef": "contactNo"
+    }, {
+        "name": "Designation",
+        "isSort": "",
+        "tableRef": "professionalDesignation"
+    }, {
+        "name": "Language Proficiency",
+        "isSort": "",
+        "tableRef": "languageProficiency"
+    }],
+    "action": [{
+        "name": "edit",
+        "icon": "fa-pencil",
+        "buttonClass": "btn-primary",
+        "type": "page",
+        "action": "editResumeDetails",
+        "fieldsToSend": {
+            "_id": "_id"
+        }
+    }, {
+        "name": "delete",
+        "icon": "fa-trash",
+        "buttonClass": "btn-danger",
+        "type": "apiCallConfirm",
+        "title": "Delete ResumeDetails",
+        "content": "Are you sure you want to delete ResumeDetails?",
+        "api": "ResumeDetails/delete",
+        "fieldsToSend": {
+            "name": "_id",
+            "value": "_id"
+        }
+    }],
+    "button": [{
+        "name": "Create",
+        "icon": "plus",
+        "class": "btn-success",
+        "type": "page",
+        "action": "createResumeDetails"
+    }],
+    "apiCall": {
+        "url": "ResumeDetails/search",
+        "params": "_id"
+    }
+}

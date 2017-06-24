@@ -1,0 +1,84 @@
+{
+    "title": "Create Users",
+    "name": "Users",
+    "jsonPage": "viewUsers",
+    "desciption": "",
+    "pageType": "create",
+    "urlFields": ["Users"],
+    "fields": [{
+            "name": "User Type",
+            "type": "tags",
+            "tableRef": "UserType",
+            "dropDownType": "single",
+            "dropDownField": "name",
+            "searchApi": "searchCall",
+            "placeholder": "Enter User Type",
+            "id": "input1",
+            "validation": ["", "trim", ""],
+            "url": "UserType/search"
+        }, {
+            "name": "First Name",
+            "type": "text",
+            "tableRef": "firstName",
+            "placeholder": "Enter First Name",
+            "id": "firstName",
+            "validation": ["required", "trim"],
+            "url": ""
+        }, {
+            "name": "Last Name",
+            "type": "text",
+            "tableRef": "lastName",
+            "placeholder": "Enter First Name",
+            "id": "lastName",
+            "validation": ["required", "trim"],
+            "url": ""
+        }, {
+            "name": "Email",
+            "type": "text",
+            "tableRef": "emailId",
+            "placeholder": "Enter Email Id",
+            "id": "emailId",
+            "validation": ["required", "trim"],
+            "url": ""
+        }, {
+            "name": "Password",
+            "type": "password",
+            "tableRef": "password",
+            "placeholder": "Enter password",
+            "id": "password",
+            "validation": ["required", "trim"],
+            "url": ""
+        }, {
+            "name": "Country",
+            "type": "text",
+            "tableRef": "country",
+            "placeholder": "Enter country",
+            "id": "country",
+            "validation": ["required", "trim", "unique"],
+            "url": ""
+        }
+
+    ],
+    "action": [{
+        "name": "submit",
+        "action": "submitUsers",
+        "stateName": {
+            "page": "page",
+            "json": {
+                "id": "viewUsers"
+            }
+        }
+    }, {
+        "name": "cancel",
+        "sideMenuRedirect": true,
+        "stateName": {
+            "page": "page",
+            "json": {
+                "id": "viewUsers"
+            }
+        }
+    }],
+    "apiCall": {
+        "url": "Users/save"
+    }
+}

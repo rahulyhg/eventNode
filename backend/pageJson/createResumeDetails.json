@@ -1,0 +1,260 @@
+{
+    "title": "Create Resume Detail",
+    "name": "ResumeDetail",
+    "jsonPage": "viewResumeDetails",
+    "desciption": "",
+    "pageType": "create",
+    "urlFields": ["ResumeDetails"],
+    "fields": [{
+            "name": "First Name",
+            "type": "text",
+            "tableRef": "name",
+            "placeholder": "Enter Name",
+            "id": "name",
+            "validation": ["", "trim", ""],
+            "url": ""
+        },
+        {
+            "name": "Last Name",
+            "type": "text",
+            "tableRef": "lastName",
+            "placeholder": "Enter lastName",
+            "id": "lastName",
+            "validation": ["", "trim", ""],
+            "url": ""
+        }, {
+            "name": "Username",
+            "type": "text",
+            "tableRef": "username",
+            "placeholder": "Enter username",
+            "id": "username",
+            "validation": ["", "trim", ""],
+            "url": ""
+        }, {
+            "name": "PortfolioLink",
+            "type": "text",
+            "tableRef": "portfolioLink",
+            "placeholder": "Enter portfolioLink",
+            "id": "portfolioLink",
+            "validation": ["", "trim", ""],
+            "url": ""
+        }, {
+            "name": "Address",
+            "type": "text",
+            "tableRef": "address",
+            "placeholder": "Enter address",
+            "id": "address",
+            "validation": ["", "trim", ""],
+            "url": ""
+        }, {
+            "name": "EmailId",
+            "type": "email",
+            "tableRef": "email",
+            "placeholder": "Enter email",
+            "id": "email",
+            "validation": ["", "trim", ""],
+            "url": ""
+        }, {
+
+            "name": "Contact No",
+            "type": "text",
+            "tableRef": "address",
+            "placeholder": "Enter address",
+            "id": "address",
+            "validation": ["", "trim", ""],
+            "url": ""
+        }, {
+
+            "name": "Professional Designation",
+            "type": "text",
+            "tableRef": "professionalDesignation",
+            "placeholder": "Enter professionalDesignation",
+            "id": "professionalDesignation",
+            "validation": ["", "trim", ""],
+            "url": ""
+        }, {
+
+            "name": "language Proficiency",
+            "type": "text",
+            "tableRef": "languageProficiency",
+            "placeholder": "Enter languageProficiency",
+            "id": "languageProficiency",
+            "validation": ["", "trim", ""],
+            "url": ""
+        }, {
+            "name": "Education",
+            "type": "box",
+            "tableRef": "education",
+            "validation": ["required", "trim", ""],
+            "fields": [{
+                "name": "School Name",
+                "type": "text",
+                "tableRef": "schoolName",
+                "placeholder": "Enter schoolName",
+                "id": "schoolName",
+                "validation": ["", "trim", ""],
+                "url": "",
+                "onView": true
+            }, {
+                "name": "Date Attended",
+                "type": "date",
+                "tableRef": "dateAttended",
+                "placeholder": "Enter dateAttended",
+                "id": "dateAttended",
+                "validation": ["", "trim", ""],
+                "url": "",
+                "onView": true
+            }, {
+                "name": "professional Designation",
+                "type": "text",
+                "tableRef": "professionalDesignation",
+                "placeholder": "Enter professionalDesignation",
+                "id": "professionalDesignation",
+                "validation": ["", "trim", ""],
+                "url": "",
+                "onView": true
+            }, {
+                "name": "area Of Study",
+                "type": "text",
+                "tableRef": "areaOfStudy",
+                "placeholder": "Enter areaOfStudy",
+                "id": "areaOfStudy",
+                "validation": ["", "trim", ""],
+                "url": "",
+                "onView": true
+            }, {
+                "name": "Description",
+                "type": "textarea",
+                "tableRef": "description",
+                "placeholder": "Enter description",
+                "id": "description",
+                "validation": ["", "trim", ""],
+                "url": "",
+                "onView": true
+            }]
+        }, {
+            "name": "Experience",
+            "type": "box",
+            "tableRef": "experience",
+            "validation": ["required", "trim", ""],
+            "fields": [{
+                "name": "LOR",
+                "type": "text",
+                "tableRef": "lor",
+                "placeholder": "Enter lor",
+                "id": "lor",
+                "validation": ["", "trim", ""],
+                "url": "",
+                "onView": true
+            }, {
+                "name": "date Attended From",
+                "type": "date",
+                "tableRef": "dateAttendedFrom",
+                "placeholder": "Enter dateAttendedFrom",
+                "id": "dateAttendedFrom",
+                "validation": ["", "trim", ""],
+                "url": "",
+                "onView": true
+            }, {
+                "name": "date Attended To",
+                "type": "date",
+                "tableRef": "dateAttendedTo",
+                "placeholder": "Enter dateAttendedTo",
+                "id": "dateAttendedTo",
+                "validation": ["", "trim", ""],
+                "url": "",
+                "onView": true
+            }, {
+                "name": "Location",
+                "type": "text",
+                "tableRef": "location",
+                "placeholder": "Enter location",
+                "id": "location",
+                "validation": ["", "trim", ""],
+                "url": "",
+                "onView": true
+            }, {
+                "name": "job Title",
+                "type": "text",
+                "tableRef": "jobTitle",
+                "placeholder": "Enter jobTitle",
+                "id": "jobTitle",
+                "validation": ["", "trim", ""],
+                "url": "",
+                "onView": true
+            }, {
+                "name": "Description",
+                "type": "textarea",
+                "tableRef": "description",
+                "placeholder": "Enter description",
+                "id": "description",
+                "validation": ["", "trim", ""],
+                "url": "",
+                "onView": true
+            }]
+        }, {
+            "name": "Certificate",
+            "type": "box",
+            "tableRef": "certificate",
+            "validation": ["required", "trim", ""],
+            "fields": [{
+                "name": "LOR",
+                "type": "text",
+                "tableRef": "lor",
+                "placeholder": "Enter lor",
+                "id": "lor",
+                "validation": ["", "trim", ""],
+                "url": "",
+                "onView": true
+            }, {
+                "name": "company Name",
+                "type": "text",
+                "tableRef": "companyName",
+                "placeholder": "Enter companyName",
+                "id": "companyName",
+                "validation": ["", "trim", ""],
+                "url": "",
+                "onView": true
+            }]
+        },
+        {
+            "name": "Client Rate",
+            "type": "number",
+            "tableRef": "clientRate",
+            "placeholder": "Enter clientRate",
+            "id": "clientRate",
+            "validation": ["", "trim", ""],
+            "url": ""
+        }, {
+            "name": "Estimated Rate",
+            "type": "number",
+            "tableRef": "estimatedRate",
+            "placeholder": "Enter estimatedRate",
+            "id": "estimatedRate",
+            "validation": ["", "trim", ""],
+            "url": ""
+        }
+    ],
+    "action": [{
+        "name": "submit",
+        "action": "submitResumeDetails",
+        "stateName": {
+            "page": "page",
+            "json": {
+                "id": "viewResumeDetails"
+            }
+        }
+    }, {
+        "name": "cancel",
+        "sideMenuRedirect": true,
+        "stateName": {
+            "page": "page",
+            "json": {
+                "id": "viewResumeDetails"
+            }
+        }
+    }],
+    "apiCall": {
+        "url": "ResumeDetails/save"
+    }
+}

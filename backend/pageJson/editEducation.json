@@ -1,0 +1,77 @@
+{
+    "title": "Create Education",
+    "name": "Education",
+    "jsonPage": "viewEducation",
+    "desciption": "",
+    "pageType": "edit",
+    "urlFields": ["_id"],
+    "fields": [{
+        "name": "School Name",
+        "type": "text",
+        "tableRef": "schoolName",
+        "placeholder": "Enter School Name",
+        "id": "schoolName",
+        "validation": ["required", "trim", "unique"],
+        "url": ""
+    }, {
+        "name": "Date Attended",
+        "type": "date",
+        "tableRef": "dateAttended",
+        "placeholder": "Enter Date Attended",
+        "id": "dateAttended",
+        "validation": ["required", "trim", "unique"],
+        "url": ""
+    }, {
+        "name": "Professional Designation",
+        "type": "text",
+        "tableRef": "professionalDesignation",
+        "placeholder": "Enter Professional Designation",
+        "id": "professionalDesignation",
+        "validation": ["required", "trim", "unique"],
+        "url": ""
+    }, {
+        "name": "areaOfStudy",
+        "type": "text",
+        "tableRef": "areaOfStudy",
+        "placeholder": "Enter areaOfStudy",
+        "id": "areaOfStudy",
+        "validation": ["required", "trim", "unique"],
+        "url": ""
+    }, {
+        "name": "description",
+        "type": "textarea",
+        "tableRef": "description",
+        "placeholder": "Enter description",
+        "id": "description",
+        "validation": ["required", "trim", "unique"],
+        "url": ""
+    }],
+    "action": [{
+        "name": "submit",
+        "action": "submitEducation",
+        "stateName": {
+            "page": "page",
+            "json": {
+                "id": "viewEducation"
+            }
+        }
+    }, {
+        "name": "cancel",
+        "sideMenuRedirect": true,
+        "stateName": {
+            "page": "page",
+            "json": {
+                "id": "viewEducation"
+            }
+        }
+    }],
+    "apiCall": {
+        "url": "Education/save",
+        "params": "_id"
+    },
+    "preApi": {
+        "url": "Education/getOne",
+        "params": "_id"
+    }
+
+}

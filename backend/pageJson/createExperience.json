@@ -1,0 +1,81 @@
+{
+
+    "title": "Create Experience",
+    "name": "User",
+    "jsonPage": "viewExperience",
+    "desciption": "",
+    "pageType": "create",
+    "urlFields": ["Experience"],
+    "fields": [{
+        "name": "LOR",
+        "type": "text",
+        "tableRef": "lor",
+        "placeholder": "Enter LOR",
+        "id": "lor",
+        "validation": ["required", "trim", "unique"],
+        "url": ""
+    }, {
+        "name": "Date Attended From",
+        "type": "date",
+        "tableRef": "dateAttendedFrom",
+        "placeholder": "Enter Date Attended From",
+        "id": "dateAttendedFrom",
+        "validation": ["trim"],
+        "url": ""
+    }, {
+        "name": "Date Attended To",
+        "type": "date",
+        "tableRef": "dateAttendedTo",
+        "placeholder": "Enter Date Attended To",
+        "id": "dateAttendedTo",
+        "validation": ["trim"],
+        "url": ""
+    }, {
+        "name": "Location",
+        "type": "text",
+        "tableRef": "location",
+        "placeholder": "Enter location",
+        "id": "location",
+        "validation": ["required", "trim"],
+        "url": ""
+    }, {
+        "name": "Job Title",
+        "type": "text",
+        "tableRef": "jobTitle",
+        "placeholder": "Enter job Title",
+        "id": "jobTitle",
+        "validation": ["required", "trim"],
+        "url": ""
+    }, {
+
+        "name": "Description",
+        "type": "textarea",
+        "tableRef": "description",
+        "placeholder": "Enter description",
+        "id": "description",
+        "validation": ["required", "trim"],
+        "url": ""
+    }],
+    "action": [{
+        "name": "submit",
+        "action": "submitExperience",
+        "stateName": {
+            "page": "page",
+            "json": {
+                "id": "viewExperience"
+            }
+        }
+    }, {
+        "name": "cancel",
+        "sideMenuRedirect": true,
+        "stateName": {
+            "page": "page",
+            "json": {
+                "id": "viewExperience"
+            }
+        }
+    }],
+    "apiCall": {
+        "url": "Experience/save"
+    }
+}

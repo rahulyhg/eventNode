@@ -1,0 +1,50 @@
+{
+
+    "title": "Create Certificate",
+    "name": "Certificate",
+    "jsonPage": "viewCertificate",
+    "desciption": "",
+    "pageType": "create",
+    "urlFields": ["Certificate"],
+    "fields": [{
+            "name": "lor",
+            "type": "text",
+            "tableRef": "lor",
+            "placeholder": "Enter lor",
+            "id": "lor",
+            "validation": ["", "trim", ""],
+            "url": ""
+        },
+        {
+            "name": "Company Name",
+            "type": "text",
+            "tableRef": "companyName",
+            "placeholder": "Enter Company Name",
+            "id": "companyName",
+            "validation": ["", "trim", ""],
+            "url": ""
+        }
+    ],
+    "action": [{
+        "name": "submit",
+        "action": "submitCertificate",
+        "stateName": {
+            "page": "page",
+            "json": {
+                "id": "viewCertificate"
+            }
+        }
+    }, {
+        "name": "cancel",
+        "sideMenuRedirect": true,
+        "stateName": {
+            "page": "page",
+            "json": {
+                "id": "viewCertificate"
+            }
+        }
+    }],
+    "apiCall": {
+        "url": "Certificate/save"
+    }
+}

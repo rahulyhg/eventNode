@@ -1,0 +1,67 @@
+{
+    "title": "Experience",
+    "description": "List of Experience",
+    "pageType": "view",
+    "sendIdWithCreate": true,
+    "urlFields": ["_id"],
+    "fields": [{
+            "name": "Lor",
+            "isSort": "",
+            "tableRef": "lor"
+        },
+        {
+            "name": "Date Attended From",
+            "isSort": "",
+            "tableRef": "dateAttendedFrom"
+        }, {
+            "name": "Date Attended To",
+            "isSort": "",
+            "tableRef": "dateAttendedTo"
+        }, {
+            "name": "Location",
+            "isSort": "",
+            "tableRef": "location"
+        }, {
+            "name": "Job Title",
+            "isSort": "",
+            "tableRef": "jobTitle"
+        }, {
+            "name": "Description",
+            "isSort": "",
+            "tableRef": "description"
+        }
+    ],
+    "action": [{
+        "name": "edit",
+        "icon": "fa-pencil",
+        "buttonClass": "btn-primary",
+        "type": "page",
+        "action": "editExperience",
+        "fieldsToSend": {
+            "_id": "_id"
+        }
+    }, {
+        "name": "delete",
+        "icon": "fa-trash",
+        "buttonClass": "btn-danger",
+        "type": "apiCallConfirm",
+        "title": "Delete Experience",
+        "content": "Are you sure you want to delete Experience?",
+        "api": "Experience/delete",
+        "fieldsToSend": {
+            "name": "_id",
+            "value": "_id"
+        }
+    }],
+    "button": [{
+        "name": "Create",
+        "icon": "plus",
+        "class": "btn-success",
+        "type": "page",
+        "action": "createExperience"
+    }],
+    "apiCall": {
+        "url": "Experience/search",
+        "params": "_id"
+    }
+}

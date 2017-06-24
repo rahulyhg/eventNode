@@ -1,0 +1,39 @@
+ {
+     "title": "Create UserType",
+     "name": "UserType",
+     "jsonPage": "viewUserType",
+     "desciption": "",
+     "pageType": "create",
+     "urlFields": ["UserType"],
+     "fields": [{
+         "name": "Name",
+         "type": "text",
+         "tableRef": "name",
+         "placeholder": "Enter UserType Name",
+         "id": "name",
+         "validation": ["required", "trim", "unique"],
+         "url": ""
+     }],
+     "action": [{
+         "name": "submit",
+         "action": "submitUserType",
+         "stateName": {
+             "page": "page",
+             "json": {
+                 "id": "viewUserType"
+             }
+         }
+     }, {
+         "name": "cancel",
+         "sideMenuRedirect": true,
+         "stateName": {
+             "page": "page",
+             "json": {
+                 "id": "viewUserType"
+             }
+         }
+     }],
+     "apiCall": {
+         "url": "UserType/save"
+     }
+ }

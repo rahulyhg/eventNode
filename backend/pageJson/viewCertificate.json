@@ -1,0 +1,49 @@
+{
+    "title": "Certificate",
+    "description": "List of Certificate",
+    "pageType": "view",
+    "sendIdWithCreate": true,
+    "urlFields": ["_id"],
+    "fields": [{
+        "name": "LOR",
+        "isSort": "",
+        "tableRef": "lor"
+    }, {
+        "name": "Company Name",
+        "isSort": "",
+        "tableRef": "companyName"
+    }],
+    "action": [{
+        "name": "edit",
+        "icon": "fa-pencil",
+        "buttonClass": "btn-primary",
+        "type": "page",
+        "action": "editCertificate",
+        "fieldsToSend": {
+            "_id": "_id"
+        }
+    }, {
+        "name": "delete",
+        "icon": "fa-trash",
+        "buttonClass": "btn-danger",
+        "type": "apiCallConfirm",
+        "title": "Delete Certificate",
+        "content": "Are you sure you want to delete Certificate?",
+        "api": "Certificate/delete",
+        "fieldsToSend": {
+            "name": "_id",
+            "value": "_id"
+        }
+    }],
+    "button": [{
+        "name": "Create",
+        "icon": "plus",
+        "class": "btn-success",
+        "type": "page",
+        "action": "createCertificate"
+    }],
+    "apiCall": {
+        "url": "Certificate/search",
+        "params": "_id"
+    }
+}

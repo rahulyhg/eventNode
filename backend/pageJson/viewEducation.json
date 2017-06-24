@@ -1,0 +1,63 @@
+{
+    "title": "Education",
+    "description": "List of Education",
+    "pageType": "view",
+    "sendIdWithCreate": true,
+    "urlFields": ["_id"],
+    "fields": [{
+            "name": "School Name",
+            "isSort": "",
+            "tableRef": "schoolName"
+        }, {
+            "name": "Date Attended",
+            "isSort": "",
+            "tableRef": "dateAttended"
+        }, {
+            "name": "professional Designation",
+            "isSort": "",
+            "tableRef": "professionalDesignation"
+        },
+        {
+            "name": "Area Of Study",
+            "isSort": "",
+            "tableRef": "areaOfStudy"
+        }, {
+            "name": "Description",
+            "isSort": "",
+            "tableRef": "description"
+        }
+    ],
+    "action": [{
+        "name": "edit",
+        "icon": "fa-pencil",
+        "buttonClass": "btn-primary",
+        "type": "page",
+        "action": "editEducation",
+        "fieldsToSend": {
+            "_id": "_id"
+        }
+    }, {
+        "name": "delete",
+        "icon": "fa-trash",
+        "buttonClass": "btn-danger",
+        "type": "apiCallConfirm",
+        "title": "Delete Education",
+        "content": "Are you sure you want to delete Education?",
+        "api": "Education/delete",
+        "fieldsToSend": {
+            "name": "_id",
+            "value": "_id"
+        }
+    }],
+    "button": [{
+        "name": "Create",
+        "icon": "plus",
+        "class": "btn-success",
+        "type": "page",
+        "action": "createEducation"
+    }],
+    "apiCall": {
+        "url": "Education/search",
+        "params": "_id"
+    }
+}
