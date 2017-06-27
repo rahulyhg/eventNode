@@ -7,13 +7,13 @@
 
 
 var MaxImageSize = 1600;
-
-
-
 var schema = new Schema({
     name: String,
-    content: String,
+    content: String
 });
+schema.plugin(uniqueValidator);
+schema.plugin(timestamps);
+schema.plugin(deepPopulate, {});
 
 // var client = new Twitter({
 //     consumer_key: 'w0Mizb3YKniG8GfZmhQJbMvER',
@@ -24,6 +24,7 @@ var schema = new Schema({
 
 module.exports = mongoose.model('Config', schema);
 
+var exports = _.cloneDeep(require("sails-wohlig-service")(schema));
 var models = {
     maxRow: 10,
     getForeignKeys: function (schema) {
@@ -381,4 +382,4 @@ var models = {
 
     }
 };
-module.exports = _.assign(module.exports, models);
+module.exports = _.assign(module.exports, exports, models);

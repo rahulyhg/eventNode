@@ -1,0 +1,125 @@
+{
+    "title": "Edit SubCategory Detail",
+    "name": "SubCategoryDetail",
+    "jsonPage": "viewSubCategoryDetail",
+    "desciption": "",
+    "pageType": "edit",
+    "urlFields": ["_id"],
+    "fields": [{
+            "name": "image Name",
+            "type": "text",
+            "tableRef": "imageName",
+            "placeholder": "Enter imageName",
+            "id": "imageName",
+            "validation": ["", "trim", ""],
+            "url": ""
+        },
+        {
+            "name": "description",
+            "type": "textarea",
+            "tableRef": "description",
+            "placeholder": "Enter description",
+            "id": "description",
+            "validation": ["", "trim", ""],
+            "url": ""
+        }, {
+            "name": "imageId",
+            "type": "number",
+            "tableRef": "imageId",
+            "placeholder": "Enter imageId",
+            "id": "imageId",
+            "validation": ["", "trim", ""],
+            "url": ""
+        }, {
+            "name": "copyRightInfo",
+            "type": "text",
+            "tableRef": "copyRightInfo",
+            "placeholder": "Enter copyRightInfo",
+            "id": "copyRightInfo",
+            "validation": ["", "trim", ""],
+            "url": ""
+        }, {
+            "name": "sizeInPixel",
+            "type": "text",
+            "tableRef": "sizeInPixel",
+            "placeholder": "Enter sizeInPixel",
+            "id": "sizeInPixel",
+            "validation": ["", "trim", ""],
+            "url": ""
+        }, {
+            "name": "sizeInCm",
+            "type": "text",
+            "tableRef": "sizeInCm",
+            "placeholder": "Enter sizeInCm",
+            "id": "sizeInCm",
+            "validation": ["", "trim", ""],
+            "url": ""
+        }, {
+            "name": "Image",
+            "type": "image",
+            "tableRef": "image1",
+            "id": "image1",
+            "placeholder": "Upload image",
+            "view": true,
+            "validation": ["required"],
+            "url": ""
+        }, {
+            "name": "Image",
+            "type": "image",
+            "tableRef": "image2",
+            "id": "image2",
+            "placeholder": "Upload image",
+            "view": true,
+            "validation": ["required"],
+            "url": ""
+        },
+        {
+            "name": "Size Type",
+            "type": "tags",
+            "tableRef": "sizeType",
+            "placeholder": "Enter sizeType",
+            "id": "sizeType",
+            "validation": ["", "trim", ""],
+            "url": "",
+            "dropDownField": "",
+            "dropDownType": "single",
+            "dropDown": ["Small", "Medium", "Large"]
+        }, {
+            "name": "price",
+            "type": "number",
+            "tableRef": "price",
+            "placeholder": "Enter price",
+            "id": "price",
+            "validation": ["", "trim", ""],
+            "url": ""
+        }
+    ],
+    "action": [{
+        "name": "submit",
+        "action": "submitSubCategoryDetail",
+        "stateName": {
+            "page": "page",
+            "json": {
+                "id": "viewSubCategoryDetail"
+            }
+        }
+    }, {
+        "name": "cancel",
+        "sideMenuRedirect": true,
+        "stateName": {
+            "page": "page",
+            "json": {
+                "id": "viewSubCategoryDetail"
+            }
+        }
+    }],
+    "apiCall": {
+        "url": "SubCategoryDetail/save",
+        "params": "_id"
+    },
+    "preApi": {
+        "url": "SubCategoryDetail/getOne",
+        "params": "_id"
+    }
+
+}

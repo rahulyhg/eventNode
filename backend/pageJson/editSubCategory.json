@@ -1,0 +1,56 @@
+{
+    "title": "SubCategory",
+    "name": "SubCategory",
+    "jsonPage": "viewSubCategory",
+    "desciption": "",
+    "pageType": "edit",
+    "urlFields": ["_id"],
+    "fields": [{
+            "name": "SubCategory",
+            "type": "text",
+            "tableRef": "name",
+            "placeholder": "Enter Sub Category",
+            "id": "name",
+            "url": ""
+        },
+        {
+            "name": "Category",
+            "type": "tags",
+            "tableRef": "category",
+            "dropDownType": "single",
+            "dropDownField": "name",
+            "searchApi": "searchCall",
+            "placeholder": "Enter category name",
+            "id": "input1",
+            "validation": ["", "trim", ""],
+            "url": "Category/search"
+        }
+    ],
+    "action": [{
+        "name": "submit",
+        "action": "submitSubCategory",
+        "stateName": {
+            "page": "page",
+            "json": {
+                "id": "viewSubCategory"
+            }
+        }
+    }, {
+        "name": "cancel",
+        "sideMenuRedirect": true,
+        "stateName": {
+            "page": "page",
+            "json": {
+                "id": "viewSubCategory"
+            }
+        }
+    }],
+    "apiCall": {
+        "url": "SubCategory/save",
+        "params": "_id"
+    },
+    "preApi": {
+        "url": "SubCategory/getOne",
+        "params": "_id"
+    }
+}

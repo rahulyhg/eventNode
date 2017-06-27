@@ -1,0 +1,53 @@
+{
+    "title": "SubCategory Detail",
+    "description": "List of SubCategoryDetail",
+    "pageType": "view",
+    "sendIdWithCreate": true,
+    "urlFields": ["_id"],
+    "fields": [{
+        "name": "imageName",
+        "isSort": "",
+        "tableRef": "imageName"
+    }, {
+        "name": "sizeType",
+        "isSort": "",
+        "tableRef": "sizeType"
+    }, {
+        "name": "price",
+        "isSort": "",
+        "tableRef": "price"
+    }],
+    "action": [{
+        "name": "edit",
+        "icon": "fa-pencil",
+        "buttonClass": "btn-primary",
+        "type": "page",
+        "action": "editSubCategoryDetail",
+        "fieldsToSend": {
+            "_id": "_id"
+        }
+    }, {
+        "name": "delete",
+        "icon": "fa-trash",
+        "buttonClass": "btn-danger",
+        "type": "apiCallConfirm",
+        "title": "Delete SubCategoryDetail",
+        "content": "Are you sure you want to delete SubCategoryDetail?",
+        "api": "SubCategoryDetail/delete",
+        "fieldsToSend": {
+            "name": "_id",
+            "value": "_id"
+        }
+    }],
+    "button": [{
+        "name": "Create",
+        "icon": "plus",
+        "class": "btn-success",
+        "type": "page",
+        "action": "createSubCategoryDetail"
+    }],
+    "apiCall": {
+        "url": "SubCategoryDetail/search",
+        "params": "_id"
+    }
+}

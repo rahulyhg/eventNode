@@ -32,7 +32,7 @@
             "url": ""
         }, {
             "name": "PortfolioLink",
-            "type": "text",
+            "type": "url",
             "tableRef": "portfolioLink",
             "placeholder": "Enter portfolioLink",
             "id": "portfolioLink",
@@ -58,14 +58,14 @@
 
             "name": "Contact No",
             "type": "text",
-            "tableRef": "address",
-            "placeholder": "Enter address",
-            "id": "address",
+            "tableRef": "contactNo",
+            "placeholder": "Enter contact No",
+            "id": "contactNo",
             "validation": ["", "trim", ""],
             "url": ""
         }, {
 
-            "name": "Professional Designation",
+            "name": "Designation",
             "type": "text",
             "tableRef": "professionalDesignation",
             "placeholder": "Enter professionalDesignation",
@@ -105,7 +105,7 @@
                 "url": "",
                 "onView": true
             }, {
-                "name": "professional Designation",
+                "name": "Designation",
                 "type": "text",
                 "tableRef": "professionalDesignation",
                 "placeholder": "Enter professionalDesignation",
@@ -124,7 +124,7 @@
                 "onView": true
             }, {
                 "name": "Description",
-                "type": "textarea",
+                "type": "text",
                 "tableRef": "description",
                 "placeholder": "Enter description",
                 "id": "description",
@@ -147,19 +147,19 @@
                 "url": "",
                 "onView": true
             }, {
-                "name": "date Attended From",
+                "name": "Date Attended From",
                 "type": "date",
                 "tableRef": "dateAttendedFrom",
-                "placeholder": "Enter dateAttendedFrom",
+                "placeholder": "Enter Date Attended From",
                 "id": "dateAttendedFrom",
                 "validation": ["", "trim", ""],
                 "url": "",
                 "onView": true
             }, {
-                "name": "date Attended To",
+                "name": "Date Attended To",
                 "type": "date",
                 "tableRef": "dateAttendedTo",
-                "placeholder": "Enter dateAttendedTo",
+                "placeholder": "Enter Date Attended To",
                 "id": "dateAttendedTo",
                 "validation": ["", "trim", ""],
                 "url": "",
@@ -174,7 +174,7 @@
                 "url": "",
                 "onView": true
             }, {
-                "name": "job Title",
+                "name": "Job Title",
                 "type": "text",
                 "tableRef": "jobTitle",
                 "placeholder": "Enter jobTitle",
@@ -184,7 +184,7 @@
                 "onView": true
             }, {
                 "name": "Description",
-                "type": "textarea",
+                "type": "text",
                 "tableRef": "description",
                 "placeholder": "Enter description",
                 "id": "description",
@@ -207,15 +207,26 @@
                 "url": "",
                 "onView": true
             }, {
-                "name": "company Name",
+                "name": "Company Name",
                 "type": "text",
                 "tableRef": "companyName",
-                "placeholder": "Enter companyName",
+                "placeholder": "Enter company Name",
                 "id": "companyName",
                 "validation": ["", "trim", ""],
                 "url": "",
                 "onView": true
             }]
+        }, {
+            "name": "Skills",
+            "type": "tags",
+            "tableRef": "typeOfSkill",
+            "dropDownType": "single",
+            "dropDownField": "name",
+            "searchApi": "searchCall",
+            "placeholder": "Enter Skill",
+            "id": "typeOfSkill",
+            "validation": ["", "trim", ""],
+            "url": "TypeOfSkill/search"
         },
         {
             "name": "Client Rate",
@@ -233,6 +244,17 @@
             "id": "estimatedRate",
             "validation": ["", "trim", ""],
             "url": ""
+        }, {
+            "name": "Status",
+            "type": "tags",
+            "tableRef": "availabiltyStatus",
+            "placeholder": "Enter Availability Status",
+            "id": "availabiltyStatus",
+            "validation": ["", "trim", ""],
+            "url": "",
+            "dropDownField": "",
+            "dropDownType": "single",
+            "dropDown": ["available", "Not Available"]
         }
     ],
     "action": [{

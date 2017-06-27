@@ -1,0 +1,54 @@
+{
+    "title": "SubCategory",
+    "description": "List of SubCategory",
+    "pageType": "view",
+    "sendIdWithCreate": true,
+    "urlFields": ["_id"],
+    "fields": [{
+            "name": "SubCategory",
+            "tableRef": "name"
+        },
+        {
+            "name": "Category",
+            "isSort": "",
+            "tableRef": "category",
+            "field": "name"
+        }
+    ],
+    "action": [{
+        "name": "edit",
+        "icon": "fa-pencil",
+        "buttonClass": "btn-primary",
+        "type": "page",
+        "action": "editSubCategory",
+        "fieldsToSend": {
+            "_id": "_id"
+        }
+    }, {
+        "name": "delete",
+        "icon": "fa-trash",
+        "buttonClass": "btn-danger",
+        "type": "apiCallConfirm",
+        "title": "Delete SubCategory",
+        "content": "Are you sure you want to delete SubCategory?",
+        "api": "SubCategory/delete",
+        "fieldsToSend": {
+            "name": "_id",
+            "value": "_id"
+        }
+    }],
+    "button": [
+
+        {
+            "name": "Create",
+            "icon": "plus",
+            "class": "btn-success",
+            "type": "page",
+            "action": "createSubCategory"
+        }
+    ],
+    "apiCall": {
+        "url": "SubCategory/search",
+        "params": "_id"
+    }
+}

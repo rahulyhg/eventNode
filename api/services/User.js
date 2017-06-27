@@ -1,90 +1,116 @@
 var schema = new Schema({
+    // name: {
+    //     type: String,
+    //     required: true,
+    //     excel: true,
+    // },
+    // email: {
+    //     type: String,
+    //     validate: validators.isEmail(),
+    //     excel: "User Email",
+    //     unique: true
+    // },
+    // dob: {
+    //     type: Date,
+    //     excel: {
+    //         name: "Birthday",
+    //         modify: function (val, data) {
+    //             return moment(val).format("MMM DD YYYY");
+    //         }
+    //     }
+    // },
+    // photo: {
+    //     type: String,
+    //     default: "",
+    //     excel: [{
+    //         name: "Photo Val"
+    //     }, {
+    //         name: "Photo String",
+    //         modify: function (val, data) {
+    //             return "http://abc/" + val;
+    //         }
+    //     }, {
+    //         name: "Photo Kebab",
+    //         modify: function (val, data) {
+    //             return data.name + " " + moment(data.dob).format("MMM DD YYYY");
+    //         }
+    //     }]
+    // },
+    // password: {
+    //     type: String,
+    //     default: ""
+    // },
+    // forgotPassword: {
+    //     type: String,
+    //     default: ""
+    // },
+    // mobile: {
+    //     type: String,
+    //     default: ""
+    // },
+    // otp: {
+    //     type: String,
+    //     default: ""
+    // },
+    // accessToken: {
+    //     type: [String],
+    //     index: true
+    // },
+    // googleAccessToken: String,
+    // googleRefreshToken: String,
+    // oauthLogin: {
+    //     type: [{
+    //         socialId: String,
+    //         socialProvider: String
+    //     }],
+    //     index: true
+    // },
+    // accessLevel: {
+    //     type: String,
+    //     default: "User",
+    //     enum: ['User', 'Admin']
+    // }
     name: {
         type: String,
-        required: true,
-        excel: true,
+        required: true
     },
-    email: {
+    lastName: {
+        type: String,
+        required: true
+    },
+    emailId: {
         type: String,
         validate: validators.isEmail(),
-        excel: "User Email",
         unique: true
-    },
-    dob: {
-        type: Date,
-        excel: {
-            name: "Birthday",
-            modify: function (val, data) {
-                return moment(val).format("MMM DD YYYY");
-            }
-        }
-    },
-    photo: {
-        type: String,
-        default: "",
-        excel: [{
-            name: "Photo Val"
-        }, {
-            name: "Photo String",
-            modify: function (val, data) {
-                return "http://abc/" + val;
-            }
-        }, {
-            name: "Photo Kebab",
-            modify: function (val, data) {
-                return data.name + " " + moment(data.dob).format("MMM DD YYYY");
-            }
-        }]
     },
     password: {
         type: String,
+        required: true,
         default: ""
     },
-    forgotPassword: {
-        type: String,
-        default: ""
+    country: {
+        type: String
     },
-    mobile: {
-        type: String,
-        default: ""
-    },
-    otp: {
-        type: String,
-        default: ""
-    },
-    accessToken: {
-        type: [String],
-        index: true
-    },
-    googleAccessToken: String,
-    googleRefreshToken: String,
-    oauthLogin: {
-        type: [{
-            socialId: String,
-            socialProvider: String
-        }],
-        index: true
-    },
-    accessLevel: {
-        type: String,
-        default: "User",
-        enum: ['User', 'Admin']
+    userType: {
+        type: Schema.Types.ObjectId,
+        ref: "UserType",
+        index: "true"
     }
 });
 
 schema.plugin(deepPopulate, {
-    populate: {
-        'user': {
-            select: 'name _id'
+    Populate: {
+        'userType': {
+            select: '_id name'
         }
+
     }
 });
 schema.plugin(uniqueValidator);
 schema.plugin(timestamps);
 
 module.exports = mongoose.model('User', schema);
-
-var exports = _.cloneDeep(require("sails-wohlig-service")(schema, "user", "user"));
+var exports = _.cloneDeep(require("sails-wohlig-service")(schema, "userType", "userType"));
 var model = {
 
     existsSocial: function (user, callback) {

@@ -1,0 +1,39 @@
+{
+    "title": "Create Template",
+    "name": "Template",
+    "jsonPage": "viewTemplate",
+    "desciption": "",
+    "pageType": "create",
+    "urlFields": ["Template"],
+    "fields": [{
+        "name": "Template Name",
+        "type": "text",
+        "tableRef": "name",
+        "placeholder": "Enter Template Name",
+        "id": "name",
+        "validation": ["required", "trim", "unique"],
+        "url": ""
+    }],
+    "action": [{
+        "name": "submit",
+        "action": "submitTemplate",
+        "stateName": {
+            "page": "page",
+            "json": {
+                "id": "viewTemplate"
+            }
+        }
+    }, {
+        "name": "cancel",
+        "sideMenuRedirect": true,
+        "stateName": {
+            "page": "page",
+            "json": {
+                "id": "viewTemplate"
+            }
+        }
+    }],
+    "apiCall": {
+        "url": "Template/save"
+    }
+}

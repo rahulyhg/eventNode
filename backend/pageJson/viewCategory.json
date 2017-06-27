@@ -1,0 +1,55 @@
+{
+    "title": "Type Of Category",
+    "description": "List of Category",
+    "pageType": "view",
+    "sendIdWithCreate": true,
+    "urlFields": ["_id"],
+    "fields": [{
+            "name": "Category ",
+            "tableRef": "name"
+        },
+        {
+            "name": "Template",
+            "isSort": "",
+            "tableRef": "template",
+            "type": "text",
+            "field": "name"
+        }
+    ],
+    "action": [{
+        "name": "edit",
+        "icon": "fa-pencil",
+        "buttonClass": "btn-primary",
+        "type": "page",
+        "action": "editCategory",
+        "fieldsToSend": {
+            "_id": "_id"
+        }
+    }, {
+        "name": "delete",
+        "icon": "fa-trash",
+        "buttonClass": "btn-danger",
+        "type": "apiCallConfirm",
+        "title": "Delete Type Of Category",
+        "content": "Are you sure you want to delete Type Of Category?",
+        "api": "Category/delete",
+        "fieldsToSend": {
+            "name": "_id",
+            "value": "_id"
+        }
+    }],
+    "button": [
+
+        {
+            "name": "Create",
+            "icon": "plus",
+            "class": "btn-success",
+            "type": "page",
+            "action": "createCategory"
+        }
+    ],
+    "apiCall": {
+        "url": "Category/search",
+        "params": "_id"
+    }
+}

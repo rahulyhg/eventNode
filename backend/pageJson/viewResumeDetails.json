@@ -9,7 +9,7 @@
         "isSort": "",
         "tableRef": "name"
     }, {
-        "name": "lastName",
+        "name": "Last Name",
         "isSort": "",
         "tableRef": "lastName"
     }, {
@@ -17,7 +17,7 @@
         "isSort": "",
         "tableRef": "username"
     }, {
-        "name": "contactNo",
+        "name": "contact No",
         "isSort": "",
         "tableRef": "contactNo"
     }, {

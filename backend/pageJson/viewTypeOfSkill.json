@@ -1,0 +1,55 @@
+{
+    "title": "Type Of Skill",
+    "description": "List of Type Of Skills",
+    "pageType": "view",
+    "sendIdWithCreate": true,
+    "urlFields": ["_id"],
+    "fields": [{
+            "name": "Type of Skill",
+            "tableRef": "name"
+        },
+        {
+            "name": "Skills",
+            "isSort": "",
+            "tableRef": "skills",
+            "type": "text",
+            "field": "name"
+        }
+    ],
+    "action": [{
+        "name": "edit",
+        "icon": "fa-pencil",
+        "buttonClass": "btn-primary",
+        "type": "page",
+        "action": "editTypeOfSkill",
+        "fieldsToSend": {
+            "_id": "_id"
+        }
+    }, {
+        "name": "delete",
+        "icon": "fa-trash",
+        "buttonClass": "btn-danger",
+        "type": "apiCallConfirm",
+        "title": "Delete Type Of Skills",
+        "content": "Are you sure you want to delete Type Of Skills?",
+        "api": "TypeOfSkill/delete",
+        "fieldsToSend": {
+            "name": "_id",
+            "value": "_id"
+        }
+    }],
+    "button": [
+
+        {
+            "name": "Create",
+            "icon": "plus",
+            "class": "btn-success",
+            "type": "page",
+            "action": "createTypeOfSkill"
+        }
+    ],
+    "apiCall": {
+        "url": "TypeOfSkill/search",
+        "params": "_id"
+    }
+}

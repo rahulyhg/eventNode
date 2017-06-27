@@ -1,4 +1,4 @@
-module.exports = function(err, data) {
+module.exports = function (err, data) {
     var req = this.req;
     var res = this.res;
     var sails = req._sails;

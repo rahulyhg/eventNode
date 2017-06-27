@@ -32,7 +32,7 @@ var schema = new Schema({
         required: true
     },
     languageProficiency: {
-        type: [String],
+        type: String,
         required: true
     },
     education: [{
@@ -91,6 +91,11 @@ var schema = new Schema({
             required: true
         }
     }],
+    typeOfSkill: {
+        type: Schema.Types.ObjectId,
+        ref: 'TypeOfSkill',
+        index: true
+    },
     clientRate: {
         type: Number,
         required: true
@@ -98,15 +103,25 @@ var schema = new Schema({
     estimatedRate: {
         type: Number,
         required: true
+    },
+    availabiltyStatus: {
+        type: String,
+        enum: ["available", "Not Available"]
     }
-
 });
 
-schema.plugin(deepPopulate, {});
+schema.plugin(deepPopulate, {
+    Populate: {
+        'typeOfSkill': {
+            select: '_id name'
+        }
+
+    }
+});
 schema.plugin(uniqueValidator);
 schema.plugin(timestamps);
 module.exports = mongoose.model('ResumeDetails', schema);
 
-var exports = _.cloneDeep(require("sails-wohlig-service")(schema));
+var exports = _.cloneDeep(require("sails-wohlig-service")(schema, "typeOfSkill", "typeOfSkill"));
 var model = {};
 module.exports = _.assign(module.exports, exports, model);

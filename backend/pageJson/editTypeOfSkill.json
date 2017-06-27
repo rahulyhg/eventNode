@@ -1,0 +1,58 @@
+{
+    "title": "Edit Type Of Skills",
+    "name": "TypeOfSkills",
+    "jsonPage": "viewTypeOfSkill",
+    "desciption": "",
+    "pageType": "edit",
+    "urlFields": ["_id"],
+    "fields": [{
+            "name": "Type of Skill",
+            "type": "text",
+            "tableRef": "name",
+            "placeholder": "Enter Type of Skill",
+            "id": "name",
+            "validation": ["required", "trim", "unique"],
+            "url": ""
+        },
+        {
+            "name": "Skills",
+            "type": "tags",
+            "tableRef": "skills",
+            "dropDownType": "single",
+            "dropDownField": "name",
+            "searchApi": "searchCall",
+            "placeholder": "Enter Skill",
+            "id": "Skills",
+            "validation": ["", "trim", ""],
+            "url": "Skills/search"
+        }
+    ],
+    "action": [{
+        "name": "submit",
+        "action": "submitTypeOfSkill",
+        "stateName": {
+            "page": "page",
+            "json": {
+                "id": "viewTypeOfSkill"
+            }
+        }
+    }, {
+        "name": "cancel",
+        "sideMenuRedirect": true,
+        "stateName": {
+            "page": "page",
+            "json": {
+                "id": "viewTypeOfSkill"
+            }
+        }
+    }],
+    "apiCall": {
+        "url": "TypeOfSkill/save",
+        "params": "_id"
+    },
+    "preApi": {
+        "url": "TypeOfSkill/getOne",
+        "params": "_id"
+    }
+
+}

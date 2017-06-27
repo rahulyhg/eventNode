@@ -1,0 +1,39 @@
+{
+    "title": "Create Skills",
+    "name": "Skills",
+    "jsonPage": "viewSkills",
+    "desciption": "",
+    "pageType": "create",
+    "urlFields": ["Skills"],
+    "fields": [{
+        "name": "Skill",
+        "type": "text",
+        "tableRef": "name",
+        "placeholder": "Enter Skill",
+        "id": "name",
+        "validation": ["required", "trim", "unique"],
+        "url": ""
+    }],
+    "action": [{
+        "name": "submit",
+        "action": "submitSkills",
+        "stateName": {
+            "page": "page",
+            "json": {
+                "id": "viewSkills"
+            }
+        }
+    }, {
+        "name": "cancel",
+        "sideMenuRedirect": true,
+        "stateName": {
+            "page": "page",
+            "json": {
+                "id": "viewSkills"
+            }
+        }
+    }],
+    "apiCall": {
+        "url": "Skills/save"
+    }
+}

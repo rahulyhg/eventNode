@@ -8,7 +8,7 @@ myApp.directive('dateModel', function ($filter, $timeout) {
             $timeout(function () {
                 console.log($filter('date')(new Date($scope.model), 'dd/MM/yyyy'));
                 $scope.model = new Date($scope.model);
-            }, 100);
+            }, 100)
 
         }
     };
@@ -116,13 +116,13 @@ myApp.directive('uploadImage', function ($http, $filter, $timeout) {
                     if ($scope.isMultiple) {
                         if ($scope.inObject) {
                             $scope.model.push({
-                                "image": data.data[0]
+                                "image": data[0]
                             });
                         } else {
                             if (!$scope.model) {
                                 $scope.clearOld();
                             }
-                            $scope.model.push(data.data[0]);
+                            $scope.model.push(data[0]);
                         }
                     } else {
                         if (_.endsWith(data.data[0], ".pdf")) {
@@ -131,7 +131,7 @@ myApp.directive('uploadImage', function ($http, $filter, $timeout) {
                             $scope.type = "image";
                         }
                         $scope.model = data.data[0];
-                        console.log($scope.model, 'model means blob');
+                        console.log($scope.model, 'model means blob')
 
                     }
                     $timeout(function () {
@@ -440,7 +440,7 @@ myApp.directive('viewField', function ($http, $filter) {
             $scope.form = {};
             $scope.objectDepth = function () {
                 if (_.isObjectLike($scope.storeObj)) {
-                    if ($scope.storeValue[$scope.storeObj.field]) {
+                    if ($scope.storeValue[$scope.storeObj.tableRef]) {
                         $scope.form.model = $scope.storeValue[$scope.storeObj.tableRef][$scope.storeObj.field];
                         $scope.storeObj = $scope.storeObj.tableRef;
                         if (_.isObjectLike($scope.storeObj)) {
@@ -481,8 +481,11 @@ myApp.directive('detailField', function ($http, $filter, JsonService) {
             value: "=value",
             detailForm: "=form",
             formData: "=data",
+
         },
         controller: 'DetailFieldCtrl',
-        link: function ($scope, element, attrs) {}
+        link: function ($scope, element, attrs) {
+
+        }
     };
 });

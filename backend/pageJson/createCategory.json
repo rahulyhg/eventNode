@@ -1,0 +1,52 @@
+{
+    "title": "Create Category",
+    "name": "Types of category",
+    "jsonPage": "viewCategory",
+    "desciption": "",
+    "pageType": "create",
+    "urlFields": ["Category"],
+    "fields": [{
+            "name": "Category Name",
+            "type": "text",
+            "tableRef": "name",
+            "placeholder": "Enter Name",
+            "id": "name",
+
+            "url": ""
+        },
+        {
+            "name": "Template",
+            "type": "tags",
+            "tableRef": "template",
+            "dropDownType": "single",
+            "dropDownField": "name",
+            "searchApi": "searchCall",
+            "placeholder": "Enter Template",
+            "id": "template",
+            "validation": ["", "trim", ""],
+            "url": "Template/search"
+        }
+    ],
+    "action": [{
+        "name": "submit",
+        "action": "submitCategory",
+        "stateName": {
+            "page": "page",
+            "json": {
+                "id": "viewCategory"
+            }
+        }
+    }, {
+        "name": "cancel",
+        "sideMenuRedirect": true,
+        "stateName": {
+            "page": "page",
+            "json": {
+                "id": "viewCategory"
+            }
+        }
+    }],
+    "apiCall": {
+        "url": "Category/save"
+    }
+}
