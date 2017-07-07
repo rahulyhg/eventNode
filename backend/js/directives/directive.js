@@ -44,7 +44,7 @@ myApp.directive('uploadImage', function ($http, $filter, $timeout) {
             }
             $scope.isMultiple = false;
             $scope.inObject = false;
-            if (attrs.multiple || attrs.multiple === "") {
+            if (attrs.multiple === "true") {
                 $scope.isMultiple = true;
                 $("#inputImage").attr("multiple", "ADD");
             }

@@ -50,6 +50,12 @@ myApp.factory('NavigationService', function ($http) {
             name: "SubCategory Detail",
             classis: "active",
             sref: "#!/page/viewSubCategoryDetail//"
+        },
+
+        {
+            name: "JobBrief Details Detail",
+            classis: "active",
+            sref: "#!/page/viewJobBriefDetails//"
         }
     ];
 

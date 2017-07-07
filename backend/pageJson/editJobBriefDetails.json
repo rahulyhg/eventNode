@@ -1,0 +1,286 @@
+{
+    "title": "Edit Job Brief Detail",
+    "name": "JobBriefDetails",
+    "jsonPage": "viewJobBriefDetails",
+    "desciption": "",
+    "pageType": "edit",
+    "urlFields": ["_id"],
+    "fields": [{
+            "name": "Description",
+            "type": "text",
+            "tableRef": "description",
+            "placeholder": "Enter Description",
+            "id": "description",
+            "validation": ["", "trim", ""],
+            "url": ""
+        },
+        {
+            "name": "Quote",
+            "type": "number",
+            "tableRef": "quote",
+            "placeholder": "Enter Quote",
+            "id": "quote",
+            "validation": ["", "trim", ""],
+            "url": ""
+        },
+        {
+            "name": "Deadline",
+            "type": "date",
+            "tableRef": "deadline",
+            "placeholder": "Enter Deadline",
+            "id": "deadline",
+            "validation": ["", "trim", ""],
+            "url": ""
+        },
+        {
+            "name": "Stagefront",
+            "type": "number",
+            "tableRef": "stagefront",
+            "placeholder": "Enter Stagefront",
+            "id": "stagefront",
+            "validation": ["", "trim", ""],
+            "url": ""
+        },
+        {
+            "name": "Size Specification",
+            "type": "text",
+            "tableRef": "sizeSpecification",
+            "placeholder": "Enter Size Specification",
+            "id": "sizeSpecification",
+            "validation": ["", "trim", ""],
+            "url": ""
+        },
+        {
+            "name": "Stage Height",
+            "type": "number",
+            "tableRef": "stageHeight",
+            "placeholder": "Enter Stage Height",
+            "id": "stageHeight",
+            "validation": ["", "trim", ""],
+            "url": ""
+        },
+        {
+            "name": "Backdrop Height",
+            "type": "number",
+            "tableRef": "backdropHeight",
+            "placeholder": "Enter Backdrop Height",
+            "id": "backdropHeight",
+            "validation": ["", "trim", ""],
+            "url": ""
+        },
+        {
+            "name": "Size Wings",
+            "type": "Boolean",
+            "tableRef": "sizeWings",
+            "placeholder": "Enter Size Wings",
+            "id": "sizeWings",
+            "validation": ["", "trim", ""],
+            "url": ""
+        },
+        {
+            "name": "Screen",
+            "type": "Boolean",
+            "tableRef": "screen",
+            "placeholder": "Enter screen",
+            "id": "screen",
+            "validation": ["", "trim", ""],
+            "url": ""
+        },
+        {
+            "name": "Steps",
+            "type": "text",
+            "tableRef": "steps",
+            "placeholder": "Enter Steps",
+            "id": "steps",
+            "validation": ["", "trim", ""],
+            "url": ""
+        },
+        {
+            "name": "Color Combination",
+            "type": "number",
+            "tableRef": "colorCombination",
+            "placeholder": "Enter Color Combination",
+            "id": "colorCombination",
+            "validation": ["", "trim", ""],
+            "url": ""
+        },
+        {
+            "name": "Other Requirments",
+            "type": "box",
+            "tableRef": "otherRequirment",
+            "validation": ["required", "trim", ""],
+            "fields": [{
+                "name": "Registration Desk",
+                "type": "text",
+                "tableRef": "registrationDesk",
+                "placeholder": "Enter Registration Desk",
+                "id": "registrationDesk",
+                "validation": ["", "trim", ""],
+                "url": "",
+                "onView": true
+            }, {
+                "name": "Ambience Props",
+                "type": "date",
+                "tableRef": "ambienceProps",
+                "placeholder": "Enter Ambience Props",
+                "id": "ambienceProps",
+                "validation": ["", "trim", ""],
+                "url": "",
+                "onView": true
+            }, {
+                "name": "Food Counter",
+                "type": "date",
+                "tableRef": "foodCounter",
+                "placeholder": "Enter Food Counter",
+                "id": "foodCounter",
+                "validation": ["", "trim", ""],
+                "url": "",
+                "onView": true
+            }, {
+                "name": "Point Of Purchase Design",
+                "type": "text",
+                "tableRef": "pointOfPurchaseDesign",
+                "placeholder": "Enter Point Of Purchase Design",
+                "id": "pointOfPurchaseDesign",
+                "validation": ["", "trim", ""],
+                "url": "",
+                "onView": true
+            }, {
+                "name": "Seating Layout",
+                "type": "text",
+                "tableRef": "seatingLayout",
+                "placeholder": "Enter Seating Layout",
+                "id": "seatingLayout",
+                "validation": ["", "trim", ""],
+                "url": "",
+                "onView": true
+            }, {
+                "name": "Customise Require",
+                "type": "text",
+                "tableRef": "customiseRequire",
+                "placeholder": "Enter Customise Require",
+                "id": "customiseRequire",
+                "validation": ["", "trim", ""],
+                "url": "",
+                "onView": true
+            }]
+        },
+        {
+            "name": "Client Logo",
+            "type": "image",
+            "tableRef": "clientLogo",
+            "placeholder": "Enter Client Logo",
+            "id": "clientLogo",
+            "view": true,
+            "validation": ["", "trim", ""],
+            "url": "",
+            "onView": true
+        },
+        {
+            "name": "Referance Image",
+            "type": "box",
+            "tableRef": "referenceImages",
+            "validation": ["required", "trim", ""],
+            "fields": [{
+                "name": "refImage",
+                "type": "image",
+                "tableRef": "refImage",
+                "tableValue": "image",
+                "placeholder": "Enter refImage",
+                "id": "refImage",
+                "option": "single",
+                "validation": ["", "trim", ""],
+                "onView": true,
+                "view": true,
+                "url": ""
+            }]
+        },
+        {
+            "name": "Discussion",
+            "type": "box",
+            "tableRef": "discussion",
+            "validation": ["required", "trim", ""],
+            "fields": [{
+                    "name": "Name",
+                    "type": "text",
+                    "tableRef": "name",
+                    "placeholder": "Enter Name",
+                    "id": "name",
+                    "validation": ["", "trim", ""],
+                    "url": "",
+                    "onView": true
+                },
+                {
+                    "name": "Image",
+                    "type": "image",
+                    "tableRef": "image",
+                    "tableValue": "image",
+                    "placeholder": "Enter image",
+                    "id": "image",
+                    "option": "single",
+                    "validation": ["", "trim", ""],
+                    "onView": true,
+                    "view": true,
+                    "url": ""
+                },
+                {
+                    "name": "Text",
+                    "type": "text",
+                    "tableRef": "text",
+                    "placeholder": "Enter text",
+                    "id": "text",
+                    "validation": ["", "trim", ""],
+                    "url": "",
+                    "onView": true
+                }
+            ]
+        },
+        {
+            "name": "Amount",
+            "type": "number",
+            "tableRef": "amount",
+            "placeholder": "Enter Amount",
+            "id": "amount",
+            "validation": ["", "trim", ""],
+            "url": "",
+            "onView": true
+        },
+        {
+            "name": "Allotted Date",
+            "type": "date",
+            "tableRef": "allottedDate",
+            "placeholder": "Enter Allotted Date",
+            "id": "allottedDate",
+            "validation": ["", "trim", ""],
+            "url": "",
+            "onView": true
+        }
+    ],
+    "action": [{
+        "name": "submit",
+        "action": "submitJobBriefDetails",
+        "stateName": {
+            "page": "page",
+            "json": {
+                "id": "viewJobBriefDetails"
+            }
+        }
+    }, {
+        "name": "cancel",
+        "sideMenuRedirect": true,
+        "stateName": {
+            "page": "page",
+            "json": {
+                "id": "viewJobBriefDetails"
+            }
+        }
+    }],
+    "apiCall": {
+        "url": "JobBriefDetails/save",
+        "params": "_id"
+    },
+    "preApi": {
+        "url": "JobBriefDetails/getOne",
+        "params": "_id"
+    }
+}

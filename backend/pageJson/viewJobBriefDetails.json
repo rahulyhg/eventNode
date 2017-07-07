@@ -1,0 +1,64 @@
+{
+    "title": "Job Brief Detail",
+    "description": "List of Job Brief Details",
+    "pageType": "view",
+    "sendIdWithCreate": true,
+    "urlFields": ["_id"],
+    "fields": [{
+            "name": "Description",
+            "isSort": "",
+            "tableRef": "description"
+        }, {
+            "name": "Quote",
+            "isSort": "",
+            "tableRef": "quote"
+        }, {
+            "name": "Deadline",
+            "isSort": "",
+            "tableRef": "deadline"
+        },
+        {
+            "name": "amount",
+            "isSort": "",
+            "tableRef": "amount"
+        },
+        {
+            "name": "allottedDate",
+            "isSort": "",
+            "tableRef": "allottedDate"
+        }
+    ],
+    "action": [{
+        "name": "edit",
+        "icon": "fa-pencil",
+        "buttonClass": "btn-primary",
+        "type": "page",
+        "action": "editJobBriefDetails",
+        "fieldsToSend": {
+            "_id": "_id"
+        }
+    }, {
+        "name": "delete",
+        "icon": "fa-trash",
+        "buttonClass": "btn-danger",
+        "type": "apiCallConfirm",
+        "title": "Delete JobBriefDetails",
+        "content": "Are you sure you want to delete JobBriefDetails?",
+        "api": "JobBriefDetails/delete",
+        "fieldsToSend": {
+            "name": "_id",
+            "value": "_id"
+        }
+    }],
+    "button": [{
+        "name": "Create",
+        "icon": "plus",
+        "class": "btn-success",
+        "type": "page",
+        "action": "createJobBriefDetails"
+    }],
+    "apiCall": {
+        "url": "JobBriefDetails/search",
+        "params": "_id"
+    }
+}
