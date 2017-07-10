@@ -191,7 +191,6 @@
                 "option": "single",
                 "validation": ["", "trim", ""],
                 "onView": true,
-                "view": true,
                 "url": ""
             }]
         },

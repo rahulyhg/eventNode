@@ -16,9 +16,9 @@
             </thead>
             <tbody>
                 <tr ng-repeat="data in model | filter:search.text ">
-                    <td ng-repeat="field2 in type.fields" ng-if="field2.onView">{{data[field2.tableRef]}}</td>
-                    <td ng-repeat="field2 in type.fields" ng-if="field2.onView && field2.type != 'selectFromTable'">
-                        <view-field type="field2" value="data"></view-field>
+                    <td ng-if="field2.onView" ng-repeat="field2 in type.fields track by $index">
+                        <img ng-if="field2.type == 'image'" ng-src="{{data[field2.tableRef] | serverimage}}">
+                        <div ng-if="field2.type != 'image' ">{{data[field2.tableRef]}}</div>
                     </td>
                     <td>
                         <a class="btn btn-primary" ng-click="editBox('Edit',data)">

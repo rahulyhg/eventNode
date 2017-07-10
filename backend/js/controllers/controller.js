@@ -11,7 +11,7 @@ myApp.controller('DashboardCtrl', function ($scope, TemplateService, NavigationS
         if ($.jStorage.get("accessToken")) {
 
         } else {
-            $state.go("login");
+            // $state.go("login");
         }
     })
     .controller('JagzCtrl', function ($scope, TemplateService, NavigationService, $timeout, $state, $interval) {
@@ -504,7 +504,11 @@ myApp.controller('DashboardCtrl', function ($scope, TemplateService, NavigationS
             if (!$scope.formData[$scope.type.tableRef]) {
                 $scope.formData[$scope.type.tableRef] = []
             }
-            $scope.formData[$scope.type.tableRef].push(data);
+
+            // if (state == 'Create') {
+            //     $scope.formData[$scope.type.tableRef].push(data);
+            // }
+
             var modalInstance = $uibModal.open({
                 animation: $scope.animationsEnabled,
                 templateUrl: '/views/modal/modal.html',
@@ -563,7 +567,7 @@ myApp.controller('DashboardCtrl', function ($scope, TemplateService, NavigationS
                     NavigationService.profile(function () {
                         $state.go("dashboard");
                     }, function () {
-                        $state.go("login");
+                        // $state.go("login");
                     });
                 });
             }
