@@ -52,7 +52,7 @@ var controller = {
         if (q >= 0) {
             _.times(20, function (n) {
                 var name = moment().subtract(5 + n, "days").format("ddd-Do-MMM-YYYY");
-                exec("cd backup && rm -rf " + name + "*", function (err, stdout, stderr) {});
+                exec("cd backup && rm -rf " + name + "*", function (err, stdout, stderr) { });
             });
             var jagz = _.map(mongoose.models, function (Model, key) {
                 var name = Model.collection.collectionName;
@@ -66,9 +66,9 @@ var controller = {
                 "key": "fs.chunks",
                 "name": "fs.chunks"
             }, {
-                "key": "fs.files",
-                "name": "fs.files"
-            });
+                    "key": "fs.files",
+                    "name": "fs.files"
+                });
             var isBackup = fs.existsSync("./backup");
             if (!isBackup) {
                 fs.mkdirSync("./backup");
@@ -87,6 +87,48 @@ var controller = {
             });
         } else {
             res.callback("Access Denied for Database Backup");
+        }
+    },
+    getUser: function (req, res) {
+        if (req.body) {
+            User.getUser(req.body, res.callback);
+        } else {
+            res.json({
+                value: false,
+                data: {
+                    message: "Invalid Request"
+                }
+            })
+        }
+    },
+
+    saveUserData: function (req, res) {
+        if (req.body) {
+            User.saveUserData(req.body, res.callback);
+        } else {
+            res.json({
+                value: false,
+                data: "User Not logged in"
+            });
+        }
+
+    },
+
+    login: function (req, res) {
+        if (req.body) {
+            if (req.body.emailId && req.body.emailId !== "" && req.body.password && req.body.password !== "") {
+                User.login(req.body, res.callback);
+            } else {
+                res.json({
+                    data: "Please provide params",
+                    value: false
+                });
+            }
+        } else {
+            res.json({
+                data: "Invalid Call",
+                value: true
+            });
         }
     }
 };

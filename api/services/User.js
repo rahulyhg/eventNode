@@ -1,3 +1,4 @@
+var generator = require('generate-password');
 var schema = new Schema({
     // name: {
     //     type: String,
@@ -71,22 +72,16 @@ var schema = new Schema({
     //     enum: ['User', 'Admin']
     // }
     name: {
-        type: String,
-        required: true
+        type: String
     },
     lastName: {
-        type: String,
-        required: true
+        type: String
     },
     emailId: {
-        type: String,
-        validate: validators.isEmail(),
-        unique: true
+        type: String
     },
     password: {
-        type: String,
-        required: true,
-        default: ""
+        type: String
     },
     country: {
         type: String
@@ -95,6 +90,13 @@ var schema = new Schema({
         type: Schema.Types.ObjectId,
         ref: "UserType",
         index: "true"
+    },
+
+
+
+    accessToken: {
+        type: [String],
+        index: true
     }
 });
 
@@ -102,7 +104,11 @@ schema.plugin(deepPopulate, {
     Populate: {
         'userType': {
             select: '_id name'
-        }
+        },
+
+        // 'resumeId': {
+        //     select: ''
+        // }
 
     }
 });
@@ -114,8 +120,8 @@ var exports = _.cloneDeep(require("sails-wohlig-service")(schema, "userType", "u
 var model = {
 
     existsSocial: function (user, callback) {
-        var Model = this;
-        Model.findOne({
+        var User = this;
+        User.findOne({
             "oauthLogin.socialId": user.id,
             "oauthLogin.socialProvider": user.provider,
         }).exec(function (err, data) {
@@ -189,7 +195,172 @@ var model = {
             data.googleAccessToken = accessToken;
             data.save(function () {});
         });
-    }
+    },
+
+    getUser: function (data, callback) {
+
+        User.find({
+            name: data.name
+        }).exec(function (err, found) {
+            console.log("Found: ", found);
+            if (err) {
+                callback(err, null);
+            } else if (_.isEmpty(found)) {
+                callback(null, "noDataound");
+            } else {
+
+                callback(null, found);
+            }
+
+        });
+    },
+
+
+    saveUserData: function (data, callback) {
+        async.waterfall([
+                function (cbWaterfall) {
+                    data.accessToken = generator.generate({
+                        length: 16,
+                        numbers: true
+                    })
+                    User.saveData(data, function (err, complete) {
+                        if (err) {
+                            cbWaterfall(err, null);
+                        } else {
+                            if (_.isEmpty(complete)) {
+                                cbWaterfall(null, []);
+                            } else {
+                                console.log("complete", complete);
+                                cbWaterfall(null, complete);
+                            }
+                        }
+                    });
+                },
+                function (complete, cbWaterfall1) {
+                    var emailData = {};
+                    console.log("data: ", data);
+                    emailData.email = data.emailId;
+                    emailData.from = "sayali.ghule@wohlig.com";
+                    emailData.filename = "verification.ejs";
+                    emailData.subject = "Account Verification";
+                    console.log("emaildata", emailData);
+
+                    Config.email(emailData, function (err, emailRespo) {
+                        if (err) {
+                            console.log(err);
+                            cbWaterfall1(null, err);
+                        } else if (emailRespo) {
+                            cbWaterfall1(null, emailRespo);
+                        } else {
+                            cbWaterfall1(null, "Invalid data");
+                        }
+                    });
+                },
+            ],
+            function (err, data2) {
+                if (err) {
+                    console.log(err);
+                    callback(null, []);
+                } else if (data2) {
+                    if (_.isEmpty(data2)) {
+                        callback(null, []);
+                    } else {
+                        callback(null, data2);
+                    }
+                }
+            });
+    },
+    loginToken: function (data, callback) {
+        async.waterfall([
+            function (callback) {
+                User.findOne({
+                    emailId: data.emailId,
+                    password: data.password,
+                }).exec(function (err, found) {
+                    if (err) {
+                        console.log(err);
+                        callback(err, null);
+                    } else if (found) {
+                        console.log("found", found);
+                        if (_.isEmpty(found.accessToken) || found.accessToken == " ") {
+                            data.tokenExist = false;
+                            callback(null, data);
+                        } else {
+                            data.tokenExist = true;
+                            callback(null, data);
+                        }
+
+                    }
+                });
+            },
+            function (data, callback) {
+                if (data.tokenExist == false) {
+                    var token = generator.generate({
+                        length: 16,
+                        numbers: true
+                    })
+                    var matchToken = {
+                        $set: {
+                            accessToken: token
+                        }
+                    }
+                    User.update({
+                        emailId: data.emailId,
+                        password: data.password,
+                    }, matchToken).exec(function (err, data3) {
+                        if (err) {
+                            console.log(err);
+                            callback(err, null);
+                        } else if (data3) {
+                            console.log("value :", data3);
+                            callback(null, data3);
+                        }
+                    });
+                } else {
+                    var data3 = data;
+                    callback(null, data3);
+                }
+            },
+            function (data3, callback) {
+                console.log(data);
+                User.findOne({
+                    emailId: data.emailId,
+                    password: data.password
+                }).exec(function (err, found) {
+                    if (err) {
+                        callback(err, null);
+                    } else if (_.isEmpty(found)) {
+                        callback("Incorrect Login Details", null);
+                    } else {
+                        console.log("found", found);
+                        callback(null, found);
+                    }
+                });
+            }
+        ], function (err, found) {
+            if (found) {
+                callback(null, found);
+            } else {
+                callback("Incorrect Login Details", null);
+            }
+        });
+
+    },
+
+    login: function (data, callback) {
+        User.loginToken(data, function (err, complete) {
+            if (err) {
+                callback(err, null);
+            } else {
+                if (_.isEmpty(complete)) {
+                    callback(null, "Data not found");
+                } else {
+                    callback(null, complete);
+                }
+            }
+        });
+    },
+
 
 };
 module.exports = _.assign(module.exports, exports, model);
