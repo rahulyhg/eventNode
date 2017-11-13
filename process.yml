@@ -1,6 +1,6 @@
 apps:
   - script: "app.js"
-    name: "NodeFramework - 80"
+    name: "EventBookNode - 81"
     watch: false
     args: "--prod"
     exec_mode: "cluster"
