@@ -240,7 +240,7 @@ var model = {
                     var emailData = {};
                     console.log("data: ", data);
                     emailData.email = data.emailId;
-                    emailData.from = "sayali.ghule@wohlig.com";
+                    emailData.from = "hr@wohlig.com";
                     emailData.filename = "verification.ejs";
                     emailData.subject = "Account Verification";
                     console.log("emaildata", emailData);
