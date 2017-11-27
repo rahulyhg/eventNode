@@ -80,15 +80,6 @@ var controller = {
     //     }
     // },
 
-
-    // updateResumeDetailsFirst: function (req, res) {
-    //     if (req.body && req.body.accessToken) {
-    //         ResumeDetails.updateResumeDetailsFirst(req.body, res.callback);
-    //     } else {
-    //         res.callback("Please provide Valid AccessToken", null);
-    //     }
-    // },
-
     // updateResumeDetailsOne: function (req, res) {
     //     if (req.body && req.body.accessToken) {
     //         ResumeDetails.updateResumeDetailsOne(req.body, res.callback);
@@ -96,48 +87,6 @@ var controller = {
     //         res.callback("Please provide Valid AccessToken", null);
     //     }
     // },
-
-
-    // updateResumeDetailsTwo: function (req, res) {
-    //     if (req.body && req.body.accessToken) {
-    //         ResumeDetails.updateResumeDetailsTwo(req.body, res.callback);
-    //     } else {
-    //         res.callback("Please provide Valid AccessToken", null);
-    //     }
-    // },
-
-
-
-    // login: function (req, res) {
-    //     if (req.body && req.body.name && req.body.name !== '' && req.body.password && req.body.password !== '') {
-    //         ResumeDetails.doLogin(req.body, res.callback);
-    //     } else {
-    //         res.json({
-    //             value: false,
-    //             data: {
-    //                 message: "Invalid Request"
-    //             }
-    //         });
-    //     }
-    // },
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
     // saveMailData: function (data, callback) {

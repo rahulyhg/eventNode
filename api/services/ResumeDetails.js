@@ -149,39 +149,6 @@ var model = {
         }
     },
 
-
-    // saveResumeDetails: function (data, callback) {
-    //     console.log(data);
-    //     var ResumeDetails = this(data);
-    //     if (data._id) {
-    //         this.findOneAndUpdate({
-    //             _id: data._id
-    //         }, data).exec(function (err, updated) {
-    //             if (err) {
-    //                 console.log(err);
-    //                 callback(err, null);
-    //             } else if (updated) {
-    //                 callback(null, updated);
-    //             } else {
-    //                 callback(null, {});
-    //             }
-    //         });
-    //     } else {
-    //         console.log("hiii");
-    //         ResumeDetails.save(function (err, created) {
-    //             if (err) {
-    //                 callback(err, null);
-    //             } else if (created) {
-    //                 callback(null, created);
-    //             } else {
-    //                 callback(null, {});
-    //             }
-    //         });
-    //     }
-    // }
-
-
-
     // saveResumeDetails: function (data, callback) {
     //     console.log(data);
     //     var ResumeDetails = this(data);
@@ -211,40 +178,6 @@ var model = {
     //         });
     //     }
     // },
-
-
-    // updateResumeDetailsFirst: function (data, callback) {
-
-    //     ResumeDetails.findOneAndUpdate({
-    //         _id: mongoose.Types.ObjectId(data._id)
-    //     }, {
-    //         $set: {
-    //             name: data.name,
-    //             lastName: data.lastName,
-    //             username: data.username,
-    //             portfolioLink: data.portfolioLink,
-    //             email: data.email,
-    //             contactNo: data.contactNo,
-    //             professionalDesignation: data.professionalDesignation,
-    //             languageProficiency: data.languageProficiency,
-    //         }
-    //     }, {
-    //         new: true
-    //     }).exec(function (err, found) {
-    //         if (err) {
-    //             console.log("inside error");
-    //             callback(err, null);
-    //         } else if (_.isEmpty(found)) {
-
-    //             callback(null, "noDataound");
-    //         } else {
-    //             console.log("found", found)
-    //             callback(null, found);
-    //         }
-
-    //     });
-    // },
-
 };
 
 
