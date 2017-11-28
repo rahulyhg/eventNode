@@ -243,6 +243,7 @@ var model = {
                     emailData.from = "hr@wohlig.com";
                     emailData.filename = "verification.ejs";
                     emailData.subject = "Account Verification";
+                     emailData._id =complete._id;
                     console.log("emaildata", emailData);
 
                     Config.email(emailData, function (err, emailRespo) {

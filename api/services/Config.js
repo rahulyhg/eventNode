@@ -423,12 +423,12 @@ var model = {
                                     });
                                     // console.log("request", request.body.attachments);
                                     sg.API(request, function (error, response) {
-                                        console.log("response", response);
+                                        console.log("response", data);
                                         if (error) {
                                             console.log('Error response received', error);
                                             callback(error, null);
                                         } else {
-                                            callback(null, response);
+                                            callback(null, data);
                                         }
                                     })
                                 } else {

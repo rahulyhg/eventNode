@@ -93,7 +93,7 @@ var schema = new Schema({
     },
     availabiltyStatus: {
         type: String,
-        enum: ["available", "Not Available"]
+        enum: ["yes", "no"]
     },
     userId: {
         type: Schema.Types.ObjectId,

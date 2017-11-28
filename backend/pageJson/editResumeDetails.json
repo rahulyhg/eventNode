@@ -255,7 +255,7 @@
             "url": "",
             "dropDownField": "",
             "dropDownType": "single",
-            "dropDown": ["available", "Not Available"]
+            "dropDown": ["yes", "no"]
         }
     ],
     "action": [{
