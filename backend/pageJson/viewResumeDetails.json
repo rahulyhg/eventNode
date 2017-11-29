@@ -28,6 +28,12 @@
         "name": "Language Proficiency",
         "isSort": "",
         "tableRef": "languageProficiency"
+    },
+    {
+        "name": "Img",
+        "isSort": "",
+        "tableRef": "img",
+        "type": "image"
     }],
     "action": [{
         "name": "edit",

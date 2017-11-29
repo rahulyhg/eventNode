@@ -101,6 +101,10 @@ var schema = new Schema({
         index: "true"
     },
 
+img: {
+        type: String,
+    }
+
 });
 
 

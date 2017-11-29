@@ -256,7 +256,18 @@
             "dropDownField": "",
             "dropDownType": "single",
             "dropDown": ["yes", "no"]
-        }
+        },
+        {
+        "name": "Img",
+        "type": "image",
+        "tableRef": "img",
+        "size": "253 x 253",
+        "placeholder": "Upload photo",
+        "id": "img",
+        "view": true,
+        "disabled": true,
+        "url": ""
+    }
     ],
     "action": [{
         "name": "submit",

@@ -93,7 +93,6 @@ var schema = new Schema({
     },
 
 
-
     accessToken: {
         type: [String],
         index: true
