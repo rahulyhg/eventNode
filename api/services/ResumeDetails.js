@@ -61,6 +61,9 @@ var schema = new Schema({
         dateAttendedTo: {
             type: Date
         },
+        present: {
+            type: String
+        },
         location: {
             type: String
         },
@@ -104,10 +107,7 @@ var schema = new Schema({
 img: {
         type: String,
     }
-
 });
-
-
 
 schema.plugin(deepPopulate, {
     Populate: {
