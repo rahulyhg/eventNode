@@ -8,6 +8,11 @@
         "name": "Skills",
         "isSort": "",
         "tableRef": "name"
+    },{
+        "name": "Image",
+        "isSort": "",
+        "tableRef": "img",
+        "type": "image"
     }],
     "action": [{
         "name": "edit",

@@ -13,6 +13,17 @@
         "id": "name",
         "validation": ["required", "trim", "unique"],
         "url": ""
+    },
+    {
+        "name": "Img",
+        "type": "image",
+        "tableRef": "img",
+        "size": "250 x 250",
+        "placeholder": "Upload photo",
+        "id": "img",
+        "view": true,
+        "disabled": true,
+        "url": ""
     }],
     "action": [{
         "name": "submit",
