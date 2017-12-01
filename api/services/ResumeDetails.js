@@ -1,4 +1,7 @@
 var schema = new Schema({
+     isProfile: {
+                type: Boolean
+            },
     name: {
         type: String
 
@@ -83,6 +86,12 @@ var schema = new Schema({
         }
     }],
 
+ skill: {
+        type: Schema.Types.ObjectId,
+        ref: "Skills",
+        index: "true"
+    },
+
     typeOfSkill: [{
         type: Schema.Types.ObjectId,
         ref: 'TypeOfSkill',
@@ -153,64 +162,28 @@ var model = {
         }
     },
 
-    // saveResumeDetails: function (data, callback) {
-    //     console.log(data);
-    //     var ResumeDetails = this(data);
-    //     if (data._id) {
-    //         this.findOneAndUpdate({
-    //             _id: data._id
-    //         }, data).exec(function (err, updated) {
-    //             if (err) {
-    //                 console.log(err);
-    //                 callback(err, null);
-    //             } else if (updated) {
-    //                 callback(null, updated);
-    //             } else {
-    //                 callback(null, {});
-    //             }
-    //         });
-    //     } else {
-    //         console.log("hiii");
-    //         ResumeDetails.save(function (err, created) {
-    //             if (err) {
-    //                 callback(err, null);
-    //             } else if (created) {
-    //                 callback(null, created);
-    //             } else {
-    //                 callback(null, {});
-    //             }
-    //         });
-    //     }
-    // },
+  
+
+findSomeValuesResume: function (data, callback) {
+    console.log("inside api findSomeValuesResume ",data)
+        ResumeDetails.findOne({
+            userId: data.user                          
+
+        }).deepPopulate("").exec(function (err, found) {
+            if (err) {
+                console.log('**** error at findOneUser of ResumeDetails.js ****', err);
+                callback(err, null);
+            } else if (_.isEmpty(found)) {
+                callback(null, 'noDataFound');
+            } else {
+                callback(null, found);
+            }
+        });
+    },
+
+
+
 };
 
-
-// updateResumeDetails: function (data, callback) {
-//     var User = this(data);
-//     if (data._id) {
-//         this.findOneAndUpdate({
-//             _id: data._id
-//         }, data).exec(function (err, updated) {
-//             if (err) {
-//                 console.log(err);
-//                 callback(err, null);
-//             } else if (updated) {
-//                 callback(null, updated);
-//             } else {
-//                 callback(null, {});
-//             }
-//         });
-//     } else {
-//         ResumeDetails.save(function (err, created) {
-//             if (err) {
-//                 callback(err, null);
-//             } else if (created) {
-//                 callback(null, created);
-//             } else {
-//                 callback(null, {});
-//             }
-//         });
-//     }
-// }
 
 module.exports = _.assign(module.exports, exports, model);
