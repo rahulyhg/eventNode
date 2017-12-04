@@ -119,57 +119,176 @@ var exports = _.cloneDeep(require("sails-wohlig-service")(schema, "userType", "u
 var model = {
 
     existsSocial: function (user, callback) {
-        var User = this;
-        User.findOne({
+        var Model = this;
+        var userEmail = '';
+        Model.findOne({
+        
             "oauthLogin.socialId": user.id,
             "oauthLogin.socialProvider": user.provider,
         }).exec(function (err, data) {
             if (err) {
                 callback(err, data);
             } else if (_.isEmpty(data)) {
-                var modelUser = {
-                    name: user.displayName,
-                    accessToken: [uid(16)],
-                    oauthLogin: [{
-                        socialId: user.id,
-                        socialProvider: user.provider,
-                    }]
-                };
                 if (user.emails && user.emails.length > 0) {
-                    modelUser.email = user.emails[0].value;
-                    var envEmailIndex = _.indexOf(env.emails, modelUser.email);
-                    if (envEmailIndex >= 0) {
-                        modelUser.accessLevel = "Admin";
-                    }
+                    userEmail = user.emails[0].value;
+                 
                 }
-                modelUser.googleAccessToken = user.googleAccessToken;
-                modelUser.googleRefreshToken = user.googleRefreshToken;
-                if (user.image && user.image.url) {
-                    modelUser.photo = user.image.url;
-                }
-                Model.saveData(modelUser, function (err, data2) {
-                    if (err) {
-                        callback(err, data2);
-                    } else {
-                        data3 = data2.toObject();
-                        delete data3.oauthLogin;
-                        delete data3.password;
-                        delete data3.forgotPassword;
-                        delete data3.otp;
-                        callback(err, data3);
-                    }
+                Model.findOne({'email':userEmail},function(err,userData){
+                             if(err){
+                            console.log(err);
+                             }
+                          if(_.isEmpty(userData)){
+                            var modelUser = {
+                                name: user.displayName,
+                                email: userEmail,
+                                accessToken: [uid(16)],
+                                loginProvider:user.provider,
+                                oauthLogin: [{
+                                    socialId: user.id,
+                                    socialProvider: user.provider,
+                                }]
+                            };
+                            
+                            modelUser.socialAccessToken = user.AccessToken;
+                            modelUser.socialRefreshToken = user.RefreshToken;
+                            if (user.image && user.image.url) {
+                                modelUser.photo = user.image.url;
+                            }
+                            Model.saveData(modelUser, function (err, data2) {
+                                if (err) {
+                                    callback(err, data2);
+                                } else {
+                                    data3 = data2.toObject();
+                                    delete data3.oauthLogin;
+                                    delete data3.password;
+                                    delete data3.forgotPassword;
+                                    delete data3.otp;
+                                    callback(err, data3);
+                                }
+                            });
+                          }else{
+                              console.log(userData.oauthLogin);
+                            userData.oauthLogin.push({socialId:user.id, socialProvider: user.provider});
+                            userData.loginProvider = user.provider;
+                            userData.socialAccessToken = user.AccessToken;
+                            userData.socialRefreshToken = user.RefreshToken;
+                            userData.save(function(err, savedData){
+                                delete savedData.oauthLogin;
+                                delete savedData.password;
+                                delete savedData.forgotPassword;
+                                delete savedData.otp;
+                                callback(err,savedData);
+                            });
+                          }   
                 });
             } else {
                 delete data.oauthLogin;
                 delete data.password;
                 delete data.forgotPassword;
                 delete data.otp;
-                data.googleAccessToken = user.googleAccessToken;
+
+                console.log(" ============ user.googleAccessToken",user.AccessToken);
+                data.loginProvider = user.provider;
+                data.socialAccessToken = user.AccessToken;
                 data.save(function () {});
                 callback(err, data);
             }
         });
     },
+
+
+
+
+// existsSocial: function (user, callback) {
+//         var Model = this;
+//         var userEmail = '';
+//         Model.findOne({
+//             "oauthLogin.socialId": user.id,
+//             "oauthLogin.socialProvider": user.provider,
+//         }).exec(function (err, data) {
+//             if (err) {
+//                 callback(err, data);
+//             } else if (_.isEmpty(data)) {
+//                 if (user.emails && user.emails.length > 0) {
+//                     userEmail = user.emails[0].value;
+//                 }
+//                 Model.findOne({
+//                     'email': userEmail
+//                 }, function (err, userData) {
+//                     if (err) {
+//                         console.log(err);
+//                     }
+//                     if (_.isEmpty(userData)) {
+//                         var modelUser = {
+//                             name: user.displayName,
+//                             email: userEmail,
+//                             accessToken: [uid(16)],
+//                             loginProvider: user.provider,
+//                             oauthLogin: [{
+//                                 socialId: user.id,
+//                                 socialProvider: user.provider,
+//                             }]
+//                         };
+//                         if (user.emails && user.emails.length > 0) {
+//                             modelUser.email = user.emails[0].value;
+//                             var envEmailIndex = _.indexOf(env.emails, modelUser.email);
+//                             if (envEmailIndex >= 0) {
+//                                 modelUser.accessLevel = "Admin";
+//                             }
+//                         }
+//                         modelUser.socialAccessToken = user.AccessToken;
+//                         modelUser.socialRefreshToken = user.RefreshToken;
+//                         if (user.image && user.image.url) {
+//                             modelUser.photo = user.image.url;
+//                         }
+//                         Model.saveData(modelUser, function (err, data2) {
+//                             if (err) {
+//                                 callback(err, data2);
+//                             } else {
+//                                 data3 = data2.toObject();
+//                                 delete data3.oauthLogin;
+//                                 delete data3.password;
+//                                 delete data3.forgotPassword;
+//                                 delete data3.otp;
+//                                 callback(err, data3);
+//                             }
+//                         });
+//                     } else {
+//                         console.log(userData.oauthLogin);
+//                         userData.oauthLogin.push({
+//                             socialId: user.id,
+//                             socialProvider: user.provider
+//                         });
+//                         userData.loginProvider = user.provider;
+//                         userData.socialAccessToken = user.AccessToken;
+//                         userData.socialRefreshToken = user.RefreshToken;
+//                         userData.save(function (err, savedData) {
+//                             delete savedData.oauthLogin;
+//                             delete savedData.password;
+//                             delete savedData.forgotPassword;
+//                             delete savedData.otp;
+//                             callback(err, savedData);
+//                         });
+//                     }
+//                 });
+//             } else {
+//                 delete data.oauthLogin;
+//                 delete data.password;
+//                 delete data.forgotPassword;
+//                 delete data.otp;
+//                 console.log(" ============ user.googleAccessToken", user.AccessToken);
+//                 data.loginProvider = user.provider;
+//                 data.socialAccessToken = user.AccessToken;
+//                 data.save(function () {});
+//                 callback(err, data);
+//             }
+//         });
+//     },
+
+
+
+
+
     profile: function (data, callback, getGoogle) {
         var str = "name email photo mobile accessLevel";
         if (getGoogle) {
