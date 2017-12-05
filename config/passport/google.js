@@ -29,6 +29,7 @@ passport.use(new GoogleStrategy({
     function (accessToken, refreshToken, profile, cb) {
         profile.AccessToken = accessToken;
         profile.RefreshToken = refreshToken;
+        console.log("profile11",profile);
         return cb(profile);
     }
 ));

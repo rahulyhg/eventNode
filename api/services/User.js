@@ -96,7 +96,22 @@ var schema = new Schema({
     accessToken: {
         type: [String],
         index: true
-    }
+    },
+    socialAccessToken: String,
+    socialRefreshToken: String,
+    oauthLogin: {
+        type: [{
+            socialId: String,
+            socialProvider: String
+        }],
+        index: true
+    },
+    accessLevel: {
+        type: String,
+        default: "User",
+        enum: ['User', 'Admin']
+    },
+    loginProvider:String
 });
 
 schema.plugin(deepPopulate, {
@@ -118,6 +133,87 @@ module.exports = mongoose.model('User', schema);
 var exports = _.cloneDeep(require("sails-wohlig-service")(schema, "userType", "userType"));
 var model = {
 
+    // existsSocial: function (user, callback) {
+    //     var Model = this;
+    //     var userEmail = '';
+    //     Model.findOne({
+        
+    //         "oauthLogin.socialId": user.id,
+    //         "oauthLogin.socialProvider": user.provider,
+    //     }).exec(function (err, data) {
+    //         if (err) {
+    //             callback(err, data);
+    //         } else if (_.isEmpty(data)) {
+    //             if (user.emails && user.emails.length > 0) {
+    //                 userEmail = user.emails[0].value;
+                 
+    //             }
+    //             Model.findOne({'email':userEmail},function(err,userData){
+    //                          if(err){
+    //                         console.log(err);
+    //                          }
+    //                       if(_.isEmpty(userData)){
+    //                         var modelUser = {
+    //                             name: user.displayName,
+    //                             email: userEmail,
+    //                             accessToken: [uid(16)],
+    //                             loginProvider:user.provider,
+    //                             oauthLogin: [{
+    //                                 socialId: user.id,
+    //                                 socialProvider: user.provider,
+    //                             }]
+    //                         };
+                            
+    //                         modelUser.socialAccessToken = user.AccessToken;
+    //                         modelUser.socialRefreshToken = user.RefreshToken;
+    //                         if (user.image && user.image.url) {
+    //                             modelUser.photo = user.image.url;
+    //                         }
+    //                         Model.saveData(modelUser, function (err, data2) {
+    //                             if (err) {
+    //                                 callback(err, data2);
+    //                             } else {
+    //                                 data3 = data2.toObject();
+    //                                 delete data3.oauthLogin;
+    //                                 delete data3.password;
+    //                                 delete data3.forgotPassword;
+    //                                 delete data3.otp;
+    //                                 callback(err, data3);
+    //                             }
+    //                         });
+    //                       }else{
+    //                           console.log(userData.oauthLogin);
+    //                         userData.oauthLogin.push({socialId:user.id, socialProvider: user.provider});
+    //                         userData.loginProvider = user.provider;
+    //                         userData.socialAccessToken = user.AccessToken;
+    //                         userData.socialRefreshToken = user.RefreshToken;
+    //                         userData.save(function(err, savedData){
+    //                             delete savedData.oauthLogin;
+    //                             delete savedData.password;
+    //                             delete savedData.forgotPassword;
+    //                             delete savedData.otp;
+    //                             callback(err,savedData);
+    //                         });
+    //                       }   
+    //             });
+
+                
+    //         } else {
+    //             delete data.oauthLogin;
+    //             delete data.password;
+    //             delete data.forgotPassword;
+    //             delete data.otp;
+
+    //             console.log(" ============ user.googleAccessToken",user.AccessToken);
+    //             data.loginProvider = user.provider;
+    //             data.socialAccessToken = user.AccessToken;
+    //             data.save(function () {});
+    //             callback(err, data);
+    //         }
+    //     });
+    // },
+
+
     existsSocial: function (user, callback) {
         var Model = this;
         var userEmail = '';
@@ -133,14 +229,15 @@ var model = {
                     userEmail = user.emails[0].value;
                  
                 }
-                Model.findOne({'email':userEmail},function(err,userData){
+                Model.findOne({'emailId':userEmail},function(err,userData){
                              if(err){
                             console.log(err);
                              }
                           if(_.isEmpty(userData)){
                             var modelUser = {
-                                name: user.displayName,
-                                email: userEmail,
+                                name: user.name.givenName,
+                                lastName: user.name.familyName,
+                                emailId: userEmail,
                                 accessToken: [uid(16)],
                                 loginProvider:user.provider,
                                 oauthLogin: [{
@@ -181,6 +278,8 @@ var model = {
                             });
                           }   
                 });
+
+                
             } else {
                 delete data.oauthLogin;
                 delete data.password;
@@ -290,7 +389,7 @@ var model = {
 
 
     profile: function (data, callback, getGoogle) {
-        var str = "name email photo mobile accessLevel";
+        var str = "name email photo mobile accessLevel loginProvider";
         if (getGoogle) {
             str += " googleAccessToken googleRefreshToken";
         }

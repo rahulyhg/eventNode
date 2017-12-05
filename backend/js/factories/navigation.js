@@ -66,6 +66,7 @@ myApp.factory('NavigationService', function ($http) {
 
         parseAccessToken: function (data, callback) {
             if (data) {
+                console.log("data in parse access token",data);
                 $.jStorage.set("accessToken", data);
                 callback();
             }
@@ -79,6 +80,7 @@ myApp.factory('NavigationService', function ($http) {
             };
             $http.post(adminurl + 'user/profile', data).then(function (data) {
                 data = data.data;
+                console.log("data in profile nav",data);
                 if (data.value === true) {
                     $.jStorage.set("profile", data.data);
                     callback();

@@ -16,8 +16,8 @@ loginFacebook: function (req, res) {
             failureRedirect: '/'
         }, res.socialLogin)(req, res);
     },
-
-    loginLinkedIn: function (req, res) {
+    
+loginLinkedIn: function (req, res) {
         if (req.query.returnUrl) {
             req.session.returnUrl = req.query.returnUrl;
         } else {
@@ -29,8 +29,6 @@ loginFacebook: function (req, res) {
             failureRedirect: '/'
         }, res.socialLogin)(req, res);
     },
-
-
 
     loginGoogle: function (req, res) {
         if (req.query.returnUrl) {
@@ -44,6 +42,11 @@ loginFacebook: function (req, res) {
             failureRedirect: '/'
         }, res.socialLogin)(req, res);
     },
+   
+
+
+
+    
     profile: function (req, res) {
         if (req.body && req.body.accessToken) {
             User.profile(req.body, res.callback);
