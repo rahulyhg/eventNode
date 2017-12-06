@@ -564,6 +564,7 @@ myApp.controller('DashboardCtrl', function ($scope, TemplateService, NavigationS
                 toastr.error("You do not have access for the Backend.");
             } else {
                 NavigationService.parseAccessToken($stateParams.id, function () {
+                    console.log("in parseAccessToken")
                     NavigationService.profile(function () {
                         $state.go("dashboard");
                     }, function () {

@@ -15,6 +15,5 @@ passport.use(new FacebookStrategy({
     profile.AccessToken = accessToken;
     profile.RefreshToken = refreshToken;
     return cb(profile);
-    
   }
 ));

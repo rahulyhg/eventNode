@@ -8,11 +8,12 @@ var controller = {
     // },
 
 loginFacebook: function (req, res) {
+    console.log("in loginFacebook",req.query);
         if (req.query.returnUrl) {
             req.session.returnUrl = req.query.returnUrl;
         }
         passport.authenticate('facebook', {
-            scope: ['public_profile', 'user_friends', 'email'],
+            scope: ['public_profile', 'user_friends', 'email', 'user_location'],
             failureRedirect: '/'
         }, res.socialLogin)(req, res);
     },
