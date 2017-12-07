@@ -14,14 +14,14 @@ if(req.session.returnUrl=="http://localhost:8080/#!/login")
 {
     // req.session.returnUrl="http://localhost:8080/#/parampage?firstName="+profile._json.first_name+"&lastName="+profile._json.last_name+"&email="+profile._json.email;
 
-req.session.returnUrl="http://localhost:8080/#/parampage?firstName="+profile.name.givenName+"&lastName="+profile.name.familyName+"&email="+profile.emails[0].value;
+req.session.returnUrl="http://localhost:8080/#/parampage?name="+profile.name.givenName+"&lastName="+profile.name.familyName+"&emailId="+profile.emails[0].value;
 
     console.log("res in returnurl",req.session.returnUrl);
 }
 else if(req.session.returnUrl=="http://event.wohlig.co.in/#!/login")
 {
 
-req.session.returnUrl="http://event.wohlig.co.in/#/parampage?firstName="+profile.name.givenName+"&lastName="+profile.name.familyName+"&email="+profile.emails[0].value;
+req.session.returnUrl="http://event.wohlig.co.in/#/parampage?name="+profile.name.givenName+"&lastName="+profile.name.familyName+"&emailId="+profile.emails[0].value;
 
 console.log("res in returnurl",req.session.returnUrl);
 }
