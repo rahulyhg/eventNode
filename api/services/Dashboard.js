@@ -13,7 +13,8 @@ var model = {
 
 findInSkilltype: function (data, callback) {
     console.log("inside api findInSkilltype ",data)
-        Dashboard.find().deepPopulate("").exec(function (err, found) {
+        Dashboard.find().deepPopulate("typeOfSkill").exec(function (err, found) {
+            console.log('**** found', found);
             if (err) {
                 console.log('**** error at findInSkilltype of Dashboard.js ****', err);
                 callback(err, null);

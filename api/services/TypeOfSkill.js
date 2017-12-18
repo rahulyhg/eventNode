@@ -55,5 +55,26 @@ var model = {
     //     }
     // },
 
+
+
+findInSkilltype: function (data, callback) {
+    console.log("inside api findInSkilltype ",data)
+        TypeOfSkill.find({_id: data._id}).deepPopulate("typeOfSkill").exec(function (err, found) {
+            console.log('**** found', found);
+            if (err) {
+                console.log('**** error at findInSkilltype of Dashboard.js ****', err);
+                callback(err, null);
+            } else if (_.isEmpty(found)) {
+                callback(null, 'noDataFound');
+            } else {
+                callback(null, found);
+            }
+        });
+    },
+
+
+
+
+
 };
 module.exports = _.assign(module.exports, exports, model);

@@ -160,6 +160,18 @@ loginLinkedIn: function (req, res) {
                 value: true
             });
         }
-    }
+    },
+     findInSkilltype: function (req, res) {
+        if (req.body) {
+            User.findInSkilltype(req.body, res.callback);
+        } else {
+            res.json({
+                value: false,
+                data: {
+                    message: "Invalid Request"
+                }
+            });
+        }
+    },
 };
 module.exports = _.assign(module.exports, controller);
