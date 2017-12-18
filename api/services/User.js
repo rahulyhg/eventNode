@@ -214,9 +214,6 @@ var model = {
         });
     },
 
-
-
-
 // existsSocial: function (user, callback) {
 //         var Model = this;
 //         var userEmail = '';
@@ -306,7 +303,6 @@ var model = {
 
 
 
-
     profile: function (data, callback, getGoogle) {
         var str = "name email photo mobile accessLevel loginProvider";
         if (getGoogle) {
@@ -352,6 +348,9 @@ var model = {
     },
 
 
+   
+   
+   
     saveUserData: function (data, callback) {
         async.waterfall([
                 function (cbWaterfall) {
