@@ -228,6 +228,16 @@
             "validation": ["", "trim", ""],
             "url": "TypeOfSkill/search"
         },
+{
+                "name": "Skill Name",
+                "type": "text",
+                "tableRef": "skillName",
+                "placeholder": "Enter skillName",
+                "id": "skillName",
+                "validation": ["", "trim", ""],
+                "url": "",
+                "onView": true
+            },
         {
             "name": "Client Rate",
             "type": "number",

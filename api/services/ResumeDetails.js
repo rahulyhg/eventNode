@@ -1,7 +1,11 @@
 var schema = new Schema({
-     isProfile: {
-                type: Boolean
-            },
+    isProfile: {
+        type: Boolean
+    },
+    isBasicDetails: {
+        type: Boolean,
+        default: false
+    },
     name: {
         type: String
 
@@ -86,10 +90,10 @@ var schema = new Schema({
         }
     }],
 
- skill: {
+    skillName: {
         type: Schema.Types.ObjectId,
         ref: "Skills",
-        index: "true"
+        index: true
     },
 
     typeOfSkill: [{
@@ -110,10 +114,10 @@ var schema = new Schema({
     userId: {
         type: Schema.Types.ObjectId,
         ref: "User",
-        index: "true"
+        index: true
     },
 
-img: {
+    img: {
         type: String,
     }
 });
@@ -162,9 +166,9 @@ var model = {
         }
     },
 
-  
 
-findSomeValuesResume: function (data, callback) {
+
+    findSomeValuesResume: function (data, callback) {
     console.log("inside api findSomeValuesResume ",data)
         ResumeDetails.findOne({
             userId: data.user                          
