@@ -483,19 +483,45 @@ var model = {
 
     },
 
-    login: function (data, callback) {
-        User.loginToken(data, function (err, complete) {
+    // login: function (data, callback) {
+    //     User.loginToken(data, function (err, complete) {
+    //         if (err) {
+    //             callback(err, null);
+    //         } else {
+    //             if (_.isEmpty(complete)) {
+    //                 callback(null, "Data not found");
+    //             } else {
+    //                 callback(null, complete);
+    //             }
+    //         }
+    //     });
+    // },
+
+
+login: function (data, callback) {
+        User.findOne({
+            emailId: data.emailId,
+            password: data.password
+        }).exec(function (err, found) {
             if (err) {
+
                 callback(err, null);
             } else {
-                if (_.isEmpty(complete)) {
-                    callback(null, "Data not found");
+                if (found) {
+                    var foundObj = found.toObject();
+                    delete foundObj.password;
+                    callback(null, foundObj);
                 } else {
-                    callback(null, complete);
+                    callback({
+                        message: "Incorrect Credentials!"
+                    }, null);
                 }
             }
+
         });
     },
+
+
 findInSkilltype: function (data, callback) {
     console.log("inside api findInSkilltype ",data)
         User.find({_id: data._id}).deepPopulate("typeOfSkill").exec(function (err, found) {

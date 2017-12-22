@@ -144,23 +144,38 @@ loginLinkedIn: function (req, res) {
 
     },
 
-    login: function (req, res) {
+    // login: function (req, res) {
+    //     if (req.body) {
+    //         if (req.body.emailId && req.body.emailId !== "" && req.body.password && req.body.password !== "") {
+    //             User.login(req.body, res.callback);
+    //         } else {
+    //             res.json({
+    //                 data: "Please provide params",
+    //                 value: false
+    //             });
+    //         }
+    //     } else {
+    //         res.json({
+    //             data: "Invalid Call",
+    //             value: true
+    //         });
+    //     }
+    // },
+
+
+  login: function (req, res) {
         if (req.body) {
-            if (req.body.emailId && req.body.emailId !== "" && req.body.password && req.body.password !== "") {
-                User.login(req.body, res.callback);
-            } else {
-                res.json({
-                    data: "Please provide params",
-                    value: false
-                });
-            }
+            User.login(req.body, res.callback);
         } else {
             res.json({
-                data: "Invalid Call",
-                value: true
-            });
+                value: false,
+                data: {
+                    message: "Invalid Request"
+                }
+            })
         }
     },
+
      findInSkilltype: function (req, res) {
         if (req.body) {
             User.findInSkilltype(req.body, res.callback);
