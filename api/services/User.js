@@ -512,9 +512,7 @@ login: function (data, callback) {
                     delete foundObj.password;
                     callback(null, foundObj);
                 } else {
-                    callback({
-                        message: "Incorrect Credentials!"
-                    }, null);
+                    callback("Incorrect Credentials!", null);
                 }
             }
 
