@@ -507,7 +507,7 @@ login: function (data, callback) {
 
                 callback(err, null);
             } else {
-                if (found) {
+                if (!_.isEmpty(found)) {
                     var foundObj = found.toObject();
                     delete foundObj.password;
                     callback(null, foundObj);
