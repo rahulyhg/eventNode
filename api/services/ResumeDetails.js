@@ -96,6 +96,13 @@ var schema = new Schema({
         index: true
     },
 
+
+    resumeId: {
+        type: Schema.Types.ObjectId,
+        ref: "Skills",
+        index: true
+    },
+
     typeOfSkill: [{
         type: Schema.Types.ObjectId,
         ref: 'TypeOfSkill',

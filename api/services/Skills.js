@@ -5,6 +5,9 @@ var schema = new Schema({
     },
     img: {
         type: String,
+    },
+    resumeId: {
+        type: String,
     }
 });
 
