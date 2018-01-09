@@ -37,10 +37,10 @@ var schema = new Schema({
         type: String
 
     },
-    languageProficiency: {
+    languageProficiency: [{
         type: String
 
-    },
+    }],
     education: [{
         schoolName: {
             type: String
